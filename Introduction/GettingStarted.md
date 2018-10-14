@@ -1,3 +1,3 @@
 # Getting Started
 
-Test
+> https://jestjs.io/docs/en/getting-started
