@@ -4,7 +4,6 @@ gitbook install && gitbook build
 
 # checkout to the gh-pages branch
 git checkout gh-pages
-git pull origin gh-pages --rebase
 
 # copy the static site files into the current directory.
 cp -R _book/* .
