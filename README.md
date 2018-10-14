@@ -1,1 +1,0 @@
-# JEST_GUIDE_KR
