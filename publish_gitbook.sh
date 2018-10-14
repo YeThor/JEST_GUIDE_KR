@@ -1,27 +1,24 @@
-# gitbook 의존 파일을 설치하고 gitbook 빌드를 돌린다.
+# (after pulling the latest updates)
+# install the plugins and build the static site
 gitbook install && gitbook build
 
-# github pages가 바라보는 gh-pages 브랜치를 만든다.
+# checkout to the gh-pages branch
 git checkout gh-pages
 
-# 최신 gh-pages 브랜치 정보를 가져와 rebase를 진행한다.
-git pull origin gh-pages --rebase
-
-# gitbook build로 생긴 _book폴더 아래 모든 정보를 현재 위치로 가져온다.
+# copy the static site files into the current directory.
 cp -R _book/* .
 
-# node_modules폴더와 _book폴더를 지워준다.
-git clean -fx node_modules
+# remove '_book' directory
 git clean -fx _book
 
-# NOQA
+# add all files
 git add .
 
-# 커밋커밋!
+# commit
 git commit -a -m "Update docs"
 
-# gh-pages 브랜치에 PUSH!
+# push to the origin
 git push origin gh-pages
 
-# 다시 master 브랜치로 돌아온다.
+# checkout to the master branch
 git checkout master
