@@ -1,4 +1,4 @@
 # Summary
 
 - Introduction
-  - [Getting Started](README.md)
+  - [Getting Started](Introduction/GettingStarted.md)
