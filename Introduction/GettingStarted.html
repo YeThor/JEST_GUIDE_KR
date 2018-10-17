@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="UsingMatchers.html" />
+    
     
 
     </head>
@@ -125,6 +127,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.2" data-path="UsingMatchers.html">
+            
+                <a href="UsingMatchers.html">
+            
+                    
+                    Using Matchers
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -180,16 +195,16 @@
 <p>&#xC6D0;&#xBB38; <a href="https://jestjs.io/docs/en/getting-started" target="_blank">https://jestjs.io/docs/en/getting-started</a></p>
 </blockquote>
 <p><code>yarn</code>&#xC744; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xC124;&#xCE58;&#xD558;&#xAC70;&#xB098;,</p>
-<pre><code>$yarn add --dev jest
+<pre><code>yarn add --dev jest
 </code></pre><p><code>npm</code>&#xC744; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xC124;&#xCE58;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <pre><code>npm install --save-dev jest
-</code></pre><p>&#xB450; &#xAC1C;&#xC758; &#xC22B;&#xC790;&#xB97C; &#xB354;&#xD558;&#xB294; &#xAC04;&#xB2E8;&#xD55C; &#xD568;&#xC218;&#xB97C; &#xC608;&#xC2DC;&#xB85C; &#xC0BC;&#xC544; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xC791;&#xC131;&#xD558;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;. &#xBA3C;&#xC800;, <code>sum.js</code> &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4ED;&#xB2C8;&#xB2E4;:</p>
+</code></pre><p>&#xB450; &#xAC1C;&#xC758; &#xC22B;&#xC790;&#xB97C; &#xB354;&#xD558;&#xB294; &#xAC04;&#xB2E8;&#xD55C; &#xD568;&#xC218;&#xB97C; &#xC608;&#xC2DC;&#xB85C; &#xC0BC;&#xC544; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xC791;&#xC131;&#xD558;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;. &#xBA3C;&#xC800;, <code>sum.js</code> &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4ED;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a, b</span>) </span>{
   <span class="hljs-keyword">return</span> a + b;
 }
 <span class="hljs-built_in">module</span>.exports = sum;
 </code></pre>
-<p>&#xADF8; &#xB2E4;&#xC74C;, <code>sum.test.js</code>&#xB77C;&#xB294; &#xC774;&#xB984;&#xC758; &#xD14C;&#xC2A4;&#xD2B8; &#xD30C;&#xC77C;&#xC744; &#xC791;&#xC131;&#xD569;&#xB2C8;&#xB2E4;. &#xC774; &#xD30C;&#xC77C;&#xC5D0;&#xC11C; &#xC2E4;&#xC81C; &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xC77C;&#xC5B4;&#xB0A9;&#xB2C8;&#xB2E4;:</p>
+<p>&#xADF8; &#xB2E4;&#xC74C;, <code>sum.test.js</code>&#xB77C;&#xB294; &#xC774;&#xB984;&#xC758; &#xD14C;&#xC2A4;&#xD2B8; &#xD30C;&#xC77C;&#xC744; &#xC791;&#xC131;&#xD569;&#xB2C8;&#xB2E4;. &#xC774; &#xD30C;&#xC77C;&#xC5D0;&#xC11C; &#xC2E4;&#xC81C; &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xC77C;&#xC5B4;&#xB0A9;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> sum = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./sum&quot;</span>);
 
 test(<span class="hljs-string">&quot;1 + 2 &#xC758; &#xAC12;&#xC740; 3&#xACFC; &#xAC19;&#xB2E4;&quot;</span>, () =&gt; {
@@ -204,33 +219,33 @@ test(<span class="hljs-string">&quot;1 + 2 &#xC758; &#xAC12;&#xC740; 3&#xACFC; &
 }
 </code></pre><p>&#xB9C8;&#xC9C0;&#xB9C9;&#xC73C;&#xB85C;, <code>yarn test</code>&#xB97C; &#xD130;&#xBBF8;&#xB110;&#xC5D0;&#xC11C; &#xC2E4;&#xD589;&#xD558;&#xBA74; Jest &#xB294; &#xB2E4;&#xC74C; &#xBA54;&#xC138;&#xC9C0;&#xB97C; &#xCD9C;&#xB825;&#xD560; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <pre><code>PASS ./sum.test.js
-:heavy_check_mark: adds 1 + 2 to equal 3 (5ms)
+adds 1 + 2 to equal 3 (5ms)
 </code></pre><p><strong>Jest &#xB97C; &#xC774;&#xC6A9;&#xD55C; &#xCCAB;&#xBC88;&#xC9F8; &#xD14C;&#xC2A4;&#xD2B8; &#xC791;&#xC131;&#xC744; &#xC131;&#xACF5;&#xC801;&#xC73C;&#xB85C; &#xB05D;&#xB9C8;&#xCCE4;&#xC2B5;&#xB2C8;&#xB2E4;!</strong></p>
-<p>&#xC774; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xB450; &#xAC12;(<code>1 + 2</code>, <code>3</code>)&#xC774; &#xC815;&#xD655;&#xD788; &#xB3D9;&#xC77C;&#xD55C;&#xC9C0; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xAE30; &#xC704;&#xD574; <code>expect</code>&#xC640; <code>toBe</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD588;&#xC2B5;&#xB2C8;&#xB2E4;. Jest &#xAC00; &#xD14C;&#xC2A4;&#xD2B8;&#xD560; &#xC218; &#xC788;&#xB294; &#xAC83;&#xB4E4;&#xC744; &#xB354; &#xBC30;&#xC6CC;&#xBCF4;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, [Using Matchers] &#xBB38;&#xC11C;&#xB97C; &#xCC38;&#xACE0;&#xD558;&#xC138;&#xC694;.</p>
+<p>&#xC774; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xB450; &#xAC12;(<code>1 + 2</code>, <code>3</code>)&#xC774; &#xC815;&#xD655;&#xD788; &#xB3D9;&#xC77C;&#xD55C;&#xC9C0; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xAE30; &#xC704;&#xD574; <code>expect</code>&#xC640; <code>toBe</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD588;&#xC2B5;&#xB2C8;&#xB2E4;. Jest &#xD14C;&#xC2A4;&#xD2B8;&#xC5D0;&#xC11C; &#xAC12;&#xC744; &#xBE44;&#xAD50;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB294; &#xB354; &#xB9CE;&#xC740; Matcher&#xC5D0; &#xB300;&#xD574; &#xBC30;&#xC6B0;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, [Using Matchers]&#xBB38;&#xC11C;&#xB97C; &#xCC38;&#xACE0;&#xD558;&#xC138;&#xC694;.</p>
 <h2 id="&#xCEE4;&#xB9E8;&#xB4DC;-&#xB77C;&#xC778;&#xC5D0;&#xC11C;-&#xC2E4;&#xD589;&#xD558;&#xAE30;">&#xCEE4;&#xB9E8;&#xB4DC; &#xB77C;&#xC778;&#xC5D0;&#xC11C; &#xC2E4;&#xD589;&#xD558;&#xAE30;</h2>
-<p>CLI &#xC5D0;&#xC11C; Jest &#xB97C; &#xBC14;&#xB85C; &#xC2E4;&#xD589;&#xC2DC;&#xD0AC; &#xC218;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xB2E4;&#xC591;&#xD558;&#xACE0; &#xC720;&#xC6A9;&#xD55C; &#xC635;&#xC158;&#xB4E4;&#xB3C4; &#xC0AC;&#xC6A9; &#xAC00;&#xB2A5;&#xD569;&#xB2C8;&#xB2E4;. (&#xB2E8;, <code>yarn global add jest</code> &#xB4F1;&#xC744; &#xC774;&#xC6A9;&#xD55C; &#xC124;&#xCE58;&#xB85C; &#xC804;&#xC5ED;&#xC801;&#xC778; Jest &#xC0AC;&#xC6A9;&#xC774; &#xAC00;&#xB2A5;&#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.)</p>
-<p>&#xC124;&#xC815; &#xD30C;&#xC77C;&#xC778; <code>config.json</code>&#xC640; &#xD568;&#xAED8; Jest &#xB85C; <code>my-test</code>&#xD30C;&#xC77C;&#xC744; &#xD14C;&#xC2A4;&#xD2B8;&#xD574;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC2E4;&#xD589; &#xD6C4;&#xC5D0;&#xB294; &#xB124;&#xC774;&#xD2F0;&#xBE0C; OS &#xC54C;&#xB9BC;&#xB4E4;&#xC774; &#xD45C;&#xC2DC;&#xB420; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>CLI&#xC5D0;&#xC11C; Jest&#xB97C; &#xBC14;&#xB85C; &#xC2E4;&#xD589;&#xC2DC;&#xD0AC; &#xC218;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xB2E4;&#xC591;&#xD558;&#xACE0; &#xC720;&#xC6A9;&#xD55C; &#xC635;&#xC158;&#xB4E4;&#xB3C4; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. (&#xB2E8;, <code>yarn global add jest</code> &#xB4F1;&#xC744; &#xC774;&#xC6A9;&#xD55C; &#xC124;&#xCE58;&#xB97C; &#xD1B5;&#xD574; &#xC804;&#xC5ED;&#xC801;&#xC778; Jest &#xC0AC;&#xC6A9;&#xC774; &#xAC00;&#xB2A5;&#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.)</p>
+<p>&#xC124;&#xC815; &#xD30C;&#xC77C;&#xC778; <code>config.json</code>&#xC640; &#xD568;&#xAED8; Jest &#xB85C; <code>my-test</code>&#xD30C;&#xC77C;&#xC744; &#xD14C;&#xC2A4;&#xD2B8;&#xD574;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC2E4;&#xD589; &#xD6C4;&#xC5D0;&#xB294; &#xB124;&#xC774;&#xD2F0;&#xBE0C; OS &#xC54C;&#xB9BC; &#xB85C;&#xADF8;&#xAC00; &#xD45C;&#xC2DC;&#xB420; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <pre><code>jest my-test --notify --config=config.json
 </code></pre><p>&#xCEE4;&#xB9E8;&#xB4DC; &#xB77C;&#xC778;&#xC744; &#xC774;&#xC6A9;&#xD55C; <code>jest</code> &#xBA85;&#xB839;&#xC5B4; &#xC0AC;&#xC6A9;&#xC5D0; &#xB300;&#xD574; &#xB354; &#xC790;&#xC138;&#xD788; &#xBC30;&#xC6B0;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, [Jest CLI Options]&#xBB38;&#xC11C;&#xB97C; &#xCC38;&#xACE0;&#xD558;&#xC138;&#xC694;.</p>
 <h2 id="&#xCD94;&#xAC00;-&#xC124;&#xC815;">&#xCD94;&#xAC00; &#xC124;&#xC815;</h2>
 <h3 id="&#xAE30;&#xBCF8;-&#xC124;&#xC815;-&#xD30C;&#xC77C;-&#xB9CC;&#xB4E4;&#xAE30;">&#xAE30;&#xBCF8; &#xC124;&#xC815; &#xD30C;&#xC77C; &#xB9CC;&#xB4E4;&#xAE30;</h3>
-<p>&#xB2E4;&#xC74C; &#xBA85;&#xB839;&#xC5B4;&#xB97C; &#xC2E4;&#xD589;&#xD558;&#xBA74; Jest &#xB294; &#xB2F9;&#xC2E0;&#xC758; &#xD604; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC5D0; &#xAE30;&#xBC18;&#xD558;&#xC5EC; &#xBA87;&#xAC00;&#xC9C0; &#xC9C8;&#xBB38;&#xC744; &#xD55C; &#xB2E4;&#xC74C;, &#xAE30;&#xBCF8;&#xC801;&#xC778; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC744; &#xC0DD;&#xC131;&#xD574;&#xC904; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xC774; &#xD30C;&#xC77C;&#xC758; &#xAC01; &#xC635;&#xC158;&#xC5D0;&#xB294; &#xC9E7;&#xC740; &#xC124;&#xBA85;&#xB3C4; &#xD3EC;&#xD568;&#xB418;&#xC5B4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB2E4;&#xC74C; &#xBA85;&#xB839;&#xC5B4;&#xB97C; &#xC2E4;&#xD589;&#xD558;&#xBA74; Jest&#xB294; &#xB2F9;&#xC2E0;&#xC758; &#xD604; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC5D0; &#xAE30;&#xBC18;&#xD558;&#xC5EC; &#xBA87; &#xAC00;&#xC9C0; &#xC9C8;&#xBB38;&#xC744; &#xD55C; &#xB2E4;&#xC74C;, &#xAE30;&#xBCF8;&#xC801;&#xC778; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC744; &#xC0DD;&#xC131;&#xD574; &#xC904; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xC774; &#xD30C;&#xC77C;&#xC758; &#xAC01; &#xC635;&#xC158;&#xC5D0;&#xB294; &#xC9E7;&#xC740; &#xC124;&#xBA85;&#xC774; &#xB2EC;&#xB824; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <pre><code>jest --init
 </code></pre><h3 id="&#xBC14;&#xBCA8;-&#xC0AC;&#xC6A9;">&#xBC14;&#xBCA8; &#xC0AC;&#xC6A9;</h3>
 <p>[Babel]&#xC744; &#xC4F0;&#xAE30; &#xC704;&#xD574;&#xC120; <code>babel-jest</code>&#xC640; <code>regenerator-runtime</code> &#xD328;&#xD0A4;&#xC9C0;&#xAC00; &#xC124;&#xCE58;&#xB418;&#xC5B4; &#xC788;&#xC5B4;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.</p>
 <pre><code>yarn add --dev babel-jest babel-core regenerator-runtime
 </code></pre><blockquote>
-<p>Note: &#xB9CC;&#xC77C; Babel 7 &#xBC84;&#xC804;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xACE0; &#xC788;&#xB2E4;&#xBA74;, <code>babel-jest</code>,<code>babel-core@^7.0.0-bridge.0</code> &#xADF8;&#xB9AC;&#xACE0; <code>@babel/core</code>&#xB97C; &#xC124;&#xCE58;&#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;: <br><code>yarn add --dev babel-jest babel-core@^7.0.0-bridge.0 @babel/core regenerator-runtime</code><br><br>node_modules &#xB97C; &#xD2B8;&#xB79C;&#xC2A4;&#xD30C;&#xC77C;&#xD558;&#xAE30; &#xC704;&#xD574;&#xC120; <code>babel.config.js</code>&#xB97C; &#xC774;&#xC6A9;&#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;. &#xB354; &#xC790;&#xC138;&#xD55C; &#xAC83;&#xC740; <a href="https://babeljs.io/docs/en/next/config-files" target="_blank">https://babeljs.io/docs/en/next/config-files</a> &#xB97C; &#xCC38;&#xACE0;&#xD558;&#xC138;&#xC694;.<br><br> &#xB2E4;&#xC74C; &#xC800;&#xC7A5;&#xC18C;&#xC5D0;&#xC11C;&#xB3C4; &#xC608;&#xC2DC;&#xB97C; &#xD655;&#xC778;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;:<a href="https://github.com/facebook/jest/tree/master/examples/babel-7" target="_blank">https://github.com/facebook/jest/tree/master/examples/babel-7</a></p>
+<p>Note: &#xB9CC;&#xC77C; Babel 7&#xBC84;&#xC804;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xACE0; &#xC788;&#xB2E4;&#xBA74;, <code>babel-jest</code>,<code>babel-core@^7.0.0-bridge.0</code> &#xADF8;&#xB9AC;&#xACE0; <code>@babel/core</code>&#xB97C; &#xC124;&#xCE58;&#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;. <br><code>yarn add --dev babel-jest babel-core@^7.0.0-bridge.0 @babel/core regenerator-runtime</code><br><br>node_modules&#xB97C; &#xD2B8;&#xB79C;&#xC2A4;&#xD30C;&#xC77C;&#xD558;&#xAE30; &#xC704;&#xD574;&#xC120; <code>babel.config.js</code>&#xB97C; &#xC774;&#xC6A9;&#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;. &#xB354; &#xC790;&#xC138;&#xD55C; &#xAC83;&#xC740; <a href="https://babeljs.io/docs/en/next/config-files" target="_blank">https://babeljs.io/docs/en/next/config-files</a> &#xB97C; &#xCC38;&#xACE0;&#xD558;&#xC138;&#xC694;.<br><br> &#xB2E4;&#xC74C; &#xC800;&#xC7A5;&#xC18C;&#xC5D0;&#xC11C; &#xC608;&#xC2DC;&#xB97C; &#xD655;&#xC778;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. <a href="https://github.com/facebook/jest/tree/master/examples/babel-7" target="_blank">https://github.com/facebook/jest/tree/master/examples/babel-7</a></p>
 </blockquote>
-<p><em>Note: <code>npm</code> 3,4 &#xBC84;&#xC804;, &#xD639;&#xC740; <code>yarn</code>&#xC744; &#xC0AC;&#xC6A9;&#xC911;&#xC774;&#xB77C;&#xBA74; &#xBA85;&#xC2DC;&#xC801;&#xC73C;&#xB85C; <code>regenerator-runtime</code>&#xC744; &#xC124;&#xCE58;&#xD560; &#xD544;&#xC694;&#xB294; &#xC5C6;&#xC2B5;&#xB2C8;&#xB2E4;.</em></p>
-<p>&#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC758; &#xB8E8;&#xD2B8; &#xD3F4;&#xB354;&#xC5D0; <code>.babelrc</code> &#xD30C;&#xC77C;&#xC744; &#xAF2D; &#xCD94;&#xAC00;&#xD558;&#xC138;&#xC694;. &#xC608;&#xB97C; &#xB4E4;&#xC5B4; ES6 &#xC640; [React.js]&#xAC00; &#xC0AC;&#xC6A9;&#xB41C; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC5D0; <code>babel-preset-env</code>&#xC640; <code>babel-preset-react</code> &#xD504;&#xB9AC;&#xC14B;&#xC744; &#xC801;&#xC6A9;&#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74; &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xC791;&#xC131;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<p><em>Note: <code>npm</code> 3,4&#xBC84;&#xC804;, &#xD639;&#xC740; <code>yarn</code>&#xC744; &#xC0AC;&#xC6A9; &#xC911;&#xC774;&#xB77C;&#xBA74; &#xBA85;&#xC2DC;&#xC801;&#xC73C;&#xB85C; <code>regenerator-runtime</code>&#xC744; &#xC124;&#xCE58;&#xD560; &#xD544;&#xC694;&#xB294; &#xC5C6;&#xC2B5;&#xB2C8;&#xB2E4;.</em></p>
+<p>&#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC758; &#xB8E8;&#xD2B8; &#xD3F4;&#xB354;&#xC5D0; <code>.babelrc</code> &#xD30C;&#xC77C;&#xC744; &#xAF2D; &#xCD94;&#xAC00;&#xD558;&#xC138;&#xC694;. &#xC608;&#xB97C; &#xB4E4;&#xC5B4; ES6&#xC640; [React.js]&#xAC00; &#xC0AC;&#xC6A9;&#xB41C; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC5D0; <code>babel-preset-env</code>&#xC640; <code>babel-preset-react</code> &#xD504;&#xB9AC;&#xC14B;&#xC744; &#xC801;&#xC6A9;&#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74; &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xC791;&#xC131;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-json">{
   <span class="hljs-string">&quot;presets&quot;</span>: [<span class="hljs-string">&quot;env&quot;</span>, <span class="hljs-string">&quot;react&quot;</span>]
 }
 </code></pre>
 <p>&#xC774;&#xC81C; &#xBAA8;&#xB4E0; ES6 &#xAE30;&#xB2A5;&#xACFC; React &#xD2B9;&#xC720;&#xC801;&#xC778; &#xBB38;&#xBC95;&#xB4E4;&#xC744; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB3C4;&#xB85D; &#xD658;&#xACBD;&#xC774; &#xC138;&#xD305;&#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <blockquote>
-<p>Note: &#xB9CC;&#xC77C; <code>env</code>&#xC635;&#xC158;&#xACFC; &#xD568;&#xAED8; &#xB354; &#xBCF5;&#xC7A1;&#xD55C; Babel &#xC124;&#xC815;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xACE0; &#xC788;&#xB2E4;&#xBA74;, Jest &#xB294; &#xC790;&#xB3D9;&#xC801;&#xC73C;&#xB85C; <code>NODE_ENV</code>&#xB97C; <code>test</code>&#xB85C; &#xC815;&#xC758;&#xD560; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xB2E4;&#xC2DC; &#xB9D0;&#xD574;, Jest &#xB294; <code>NODE_ENV</code>&#xAC00; &#xC815;&#xC758;&#xB418;&#xC5B4; &#xC788;&#xC9C0; &#xC54A;&#xC744;&#xB54C; Babel &#xC774; &#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; &#xC218;&#xD589;&#xD588;&#xC744; <code>development</code> &#xC139;&#xC158;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>Note: &#xB9CC;&#xC77C; <code>env</code>&#xC635;&#xC158;&#xACFC; &#xD568;&#xAED8; &#xB354; &#xBCF5;&#xC7A1;&#xD55C; Babel &#xC124;&#xC815;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xACE0; &#xC788;&#xB2E4;&#xBA74;, Jest&#xB294; &#xC790;&#xB3D9;&#xC801;&#xC73C;&#xB85C; <code>NODE_ENV</code>&#xB97C; <code>test</code>&#xB85C; &#xC815;&#xC758;&#xD560; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xB2E4;&#xC2DC; &#xB9D0;&#xD574;, Jest &#xB294; <code>NODE_ENV</code>&#xAC00; &#xC815;&#xC758;&#xB418;&#xC5B4; &#xC788;&#xC9C0; &#xC54A;&#xC744;&#xB54C; Babel &#xC774; &#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; &#xC218;&#xD589;&#xD588;&#xC744; <code>development</code> &#xC139;&#xC158;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <p>Note: &#xB9CC;&#xC57D; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xAC00; <code>{&quot;modules&quot;: false}</code> &#xB4F1;&#xC758; &#xC635;&#xC158;&#xC73C;&#xB85C; ES6 &#xBAA8;&#xB4C8;&#xC744; &#xD2B8;&#xB79C;&#xC2A4;&#xD30C;&#xC77C;&#xD558;&#xC9C0; &#xC54A;&#xB354;&#xB77C;&#xB3C4;, &#xD14C;&#xC2A4;&#xD2B8; &#xD658;&#xACBD;&#xC5D0;&#xC120; ES6 &#xBAA8;&#xB4C8;&#xC744; &#xD2B8;&#xB79C;&#xC2A4;&#xD30C;&#xC77C;&#xD558;&#xB294; &#xBC29;&#xD5A5;&#xC73C;&#xB85C; &#xC635;&#xC158;&#xC774; &#xC124;&#xC815;&#xB418;&#xC5B4; &#xC788;&#xC5B4;&#xC57C;&#xB9CC; &#xD569;&#xB2C8;&#xB2E4;.</p>
 </blockquote>
 <pre><code class="lang-json">{
@@ -243,7 +258,7 @@ test(<span class="hljs-string">&quot;1 + 2 &#xC758; &#xAC12;&#xC740; 3&#xACFC; &
 }
 </code></pre>
 <blockquote>
-<p>Note: <code>babel-jest</code>&#xB294; Jest &#xAC00; &#xC124;&#xCE58;&#xB420; &#xB54C; &#xC790;&#xB3D9; &#xC124;&#xCE58;&#xB429;&#xB2C8;&#xB2E4;. &#xB610;&#xD55C; &#xD604; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC5D0; &#xBC14;&#xBCA8; &#xC124;&#xC815;&#xC774; &#xC801;&#xC6A9;&#xB418;&#xC5B4;&#xC788;&#xB2E4;&#xBA74; &#xD30C;&#xC77C;&#xB4E4;&#xC744; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xBCC0;&#xD658;&#xD560; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xC774;&#xB97C; &#xB9C9;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, &#xBA85;&#xC2DC;&#xC801;&#xC73C;&#xB85C; <code>transform</code> &#xC124;&#xC815; &#xC635;&#xC158;&#xC744; &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xB9AC;&#xC14B;&#xC2DC;&#xCF1C;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>Note: <code>babel-jest</code>&#xB294; Jest&#xAC00; &#xC124;&#xCE58;&#xB420; &#xB54C; &#xC790;&#xB3D9; &#xC124;&#xCE58;&#xB429;&#xB2C8;&#xB2E4;. &#xB610;&#xD55C; &#xD604; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC5D0; &#xBC14;&#xBCA8; &#xC124;&#xC815;&#xC774; &#xC801;&#xC6A9;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&#xBA74; &#xD30C;&#xC77C;&#xB4E4;&#xC744; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xBCC0;&#xD658;&#xD574; &#xC904; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xC774;&#xB97C; &#xB9C9;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, &#xBA85;&#xC2DC;&#xC801;&#xC73C;&#xB85C; <code>transform</code> &#xC124;&#xC815; &#xC635;&#xC158;&#xC744; &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xB9AC;&#xC14B;&#xC2DC;&#xCF1C;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.</p>
 </blockquote>
 <pre><code class="lang-json"><span class="hljs-comment">// package.json</span>
 {
@@ -253,9 +268,9 @@ test(<span class="hljs-string">&quot;1 + 2 &#xC758; &#xAC12;&#xC740; 3&#xACFC; &
 }
 </code></pre>
 <h3 id="webpack-&#xC0AC;&#xC6A9;&#xD558;&#xAE30;">Webpack &#xC0AC;&#xC6A9;&#xD558;&#xAE30;</h3>
-<p>Webpack &#xC740; &#xC5EC;&#xB7EC; &#xC790;&#xC6D0;&#xACFC; &#xCEF4;&#xD30C;&#xC77C;&#xC744; &#xB9E4;&#xB2C8;&#xC9D5;&#xD560; &#xC218; &#xC788;&#xAC8C; &#xB3C4;&#xC640;&#xC8FC;&#xB294; &#xBAA8;&#xB4C8; &#xBC88;&#xB4E4;&#xB7EC;&#xC785;&#xB2C8;&#xB2E4;. Jest &#xB294; &#xC774;&#xB7EC;&#xD55C; Webpack &#xC774; &#xC801;&#xC6A9;&#xB418;&#xC5B4;&#xC788;&#xB294; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC5D0;&#xC11C;&#xB3C4; &#xC4F8; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. Webpack &#xC740; &#xADF8; &#xC5B4;&#xB5A4; &#xD234;&#xBCF4;&#xB2E4; &#xB354; &#xC720;&#xC6A9;&#xD558;&#xACE0; &#xBA4B;&#xC9C4; &#xAE30;&#xB2A5;&#xC744; &#xC81C;&#xACF5;&#xD558;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xAD00;&#xB828; &#xB0B4;&#xC6A9;&#xC774; &#xAD81;&#xAE08;&#xD558;&#xB2E4;&#xBA74; [Webpack &#xACFC; &#xD568;&#xAED8; &#xC0AC;&#xC6A9;&#xD558;&#xAE30;] &#xBB38;&#xC11C;&#xB97C; &#xBCF4;&#xC2DC;&#xAE30; &#xBC14;&#xB78D;&#xB2C8;&#xB2E4;.</p>
+<p>Webpack&#xC740; &#xC5EC;&#xB7EC; &#xC790;&#xC6D0;&#xACFC; &#xCEF4;&#xD30C;&#xC77C;&#xC744; &#xB9E4;&#xB2C8;&#xC9D5;&#xD560; &#xC218; &#xC788;&#xAC8C; &#xB3C4;&#xC640;&#xC8FC;&#xB294; &#xBAA8;&#xB4C8; &#xBC88;&#xB4E4;&#xB7EC;&#xC785;&#xB2C8;&#xB2E4;. Jest&#xB294; Webpack&#xC774; &#xC801;&#xC6A9;&#xB418;&#xC5B4;&#xC788;&#xB294; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC5D0;&#xC11C;&#xB3C4; &#xC4F8; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. Webpack&#xC740; &#xADF8; &#xC5B4;&#xB5A4; &#xD234;&#xBCF4;&#xB2E4; &#xB354; &#xC720;&#xC6A9;&#xD558;&#xACE0; &#xBA4B;&#xC9C4; &#xAE30;&#xB2A5;&#xC744; &#xC81C;&#xACF5;&#xD558;&#xACE0; &#xC788;&#xC73C;&#xB2C8;, &#xAD00;&#xB828; &#xB0B4;&#xC6A9;&#xC774; &#xAD81;&#xAE08;&#xD558;&#xB2E4;&#xBA74; [Webpack&#xACFC; &#xD568;&#xAED8; &#xC0AC;&#xC6A9;&#xD558;&#xAE30;] &#xBB38;&#xC11C;&#xB97C; &#xBCF4;&#xC2DC;&#xAE30; &#xBC14;&#xB78D;&#xB2C8;&#xB2E4;.</p>
 <h3 id="typescript-&#xC0AC;&#xC6A9;&#xD558;&#xAE30;">Typescript &#xC0AC;&#xC6A9;&#xD558;&#xAE30;</h3>
-<p>Typescript &#xB97C; Jest &#xC640; &#xD568;&#xAED8; &#xC4F0;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74; [ts-jest]&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>Typescript&#xB97C; Jest&#xC640; &#xD568;&#xAED8; &#xC4F0;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74; [ts-jest]&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC138;&#xC694;.</p>
 
                                 
                                 </section>
@@ -284,6 +299,10 @@ test(<span class="hljs-string">&quot;1 + 2 &#xC758; &#xAC12;&#xC740; 3&#xACFC; &
             
                 
                 
+                <a href="UsingMatchers.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Using Matchers">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
             
         
     </div>
@@ -291,7 +310,7 @@ test(<span class="hljs-string">&quot;1 + 2 &#xC758; &#xAC12;&#xC740; 3&#xACFC; &
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Started","level":"1.2.1","depth":2,"previous":{"title":"Introduction","level":"1.2","depth":1,"ref":"","articles":[{"title":"Getting Started","level":"1.2.1","depth":2,"path":"Introduction/GettingStarted.md","ref":"Introduction/GettingStarted.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/GettingStarted.md","mtime":"2018-10-16T15:49:47.760Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-16T15:50:23.719Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Getting Started","level":"1.2.1","depth":2,"next":{"title":"Using Matchers","level":"1.2.2","depth":2,"path":"Introduction/UsingMatchers.md","ref":"Introduction/UsingMatchers.md","articles":[]},"previous":{"title":"Introduction","level":"1.2","depth":1,"ref":"","articles":[{"title":"Getting Started","level":"1.2.1","depth":2,"path":"Introduction/GettingStarted.md","ref":"Introduction/GettingStarted.md","articles":[]},{"title":"Using Matchers","level":"1.2.2","depth":2,"path":"Introduction/UsingMatchers.md","ref":"Introduction/UsingMatchers.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/GettingStarted.md","mtime":"2018-10-17T16:34:45.458Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-17T16:42:12.648Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
