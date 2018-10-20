@@ -1,8 +1,8 @@
 # Using Matchers
 
-Jest 는 다양한 방법으로 값을 테스트하기 위해 "Matcher"라는 것을 사용하고 있습니다. 이 문서에서는 주로 쓰이는 Matcher 들을 소개하려고 합니다. 모든 Matcher 들에 대한 정보를 알고 싶다면, [`expect` API doc]문서를 참고해주세요.
+Jest는 다양한 방법으로 값을 테스트하기 위해 **Matcher**라는 것을 사용합니다. 이 문서에서는 주로 쓰이는 Matcher들을 소개하려고 합니다. 모든 Matcher들에 대해 알고 싶다면, [`expect` API doc](https://jestjs.io/docs/en/expect)문서를 참고해주세요.
 
-## 주로 쓰이는 Matcher
+## 자주 쓰는 Matcher
 
 값을 테스트하는 가장 단순한 방법은 *정확히 동일한지*를 알아보는 것입니다.
 
@@ -12,9 +12,9 @@ test('2 + 2는 4다`, () => {
 });
 ```
 
-이 코드에서 `expect(2 + 2)`는 expectation(기댓값) 객체를 반환합니다. expectation 객체에는 주로 Matcher 를 적용하여 값을 비교합니다. 위 코드에서 `.toBe(4)`는 Matcher 입니다. Jest 는 실행되면 테스트를 통과하지 못한 모든 Matcher 를 추적하여 에러 메세지에 출력해줄 것입니다.
+`expect(2 + 2)`는 expectation(기댓값) 객체를 반환합니다. expectation 객체에 Matcher를 적용해 실제값과 기댓값을 서로 비교합니다. 위 코드에서 Matcher는 `.toBe(4)`입니다. Jest는 실행시 모든 Matcher의 테스트 결과를 추적하며, 실패한 테스트 결과는 모두 에러 메세지에 출력됩니다.
 
-`toBe`는 두 값이 엄격하게 동일한지를 체크하기 위해 [`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)를 사용합니다. 그저 객체의 값이 같은지만을 체크하고 싶다면, `toEqual`을 사용해도 좋습니다.
+`toBe`는 두 값이 엄격하게 동일한지를 체크하기 위해 [`Object.is`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is)를 사용합니다. 그저 객체의 값이 같은 지만을 체크하고 싶다면, `toEqual`을 사용해도 좋습니다.
 
 ```jsx
 test("객체 할당", () => {
@@ -24,7 +24,7 @@ test("객체 할당", () => {
 });
 ```
 
-`toEqual`은 각 객체나 배열의 모든 값을 재귀적으로 돌면서 체크합니다. Matcher 에 `not`을 붙이면 반대의 의미를 테스트할 수 있습니다.
+`toEqual`은 객체나 배열의 모든 값을 재귀적으로 돌면서 테스트를 진행합니다. 반대의 경우를 테스트하고 싶다면 Matcher에 `not`을 붙이면 됩니다.
 
 ```jsx
 test("양수끼리 더하면 0이 될 수 없다", () => {
@@ -38,7 +38,7 @@ test("양수끼리 더하면 0이 될 수 없다", () => {
 
 ## 참 & 거짓
 
-때로는 `undefined`, `null` 그리고 `false`의 값을 구분하여 테스트해야할 경우가 있습니다. Jest 는 이러한 니즈를 충족하는 다음의 기능을 제공합니다.
+때로는 `undefined`, `null` 그리고 `false`의 값을 구분하여 테스트해야할 경우가 있습니다. Jest는 이러한 니즈를 충족하는 다음의 기능들을 제공합니다.
 
 - `toBeNull`은 `null`인 값에만 매칭됩니다.
 - `toBeUndefined`는 `undefined`인 값에만 매칭됩니다.
@@ -70,7 +70,7 @@ test("zero", () => {
 });
 ```
 
-Matcher 는 테스트하고자 하는 코드의 의도에 맞게 최대한 정확하게 써야 합니다.
+Matcher는 코드의 목적에 맞게 테스트할 수 있게끔 최대한 정확하게 써야 합니다.
 
 ## 숫자
 
@@ -97,7 +97,7 @@ test("실수값을 더한다", () => {
   const value = 0.1 + 0.2;
 
   // expect(value).toBe(0.3); 소숫점 단위의 오차로 인해 테스트를 통과하지 못합니다.
-  expect(value).toBeCloseTo(0.3); // 제대로 동작합니다.
+  expect(value).toBeCloseTo(0.3); // 테스트를 통과합니다.
 });
 ```
 
@@ -110,7 +110,7 @@ test("team에는 I라는 글자가 없다", () => {
   expect("team").not.toMatch(/I/);
 });
 
-test("그러나 Christoph에는 stop이라는 글자가 포함되어 있다.", () => {
+test("Christoph에는 stop이라는 글자가 포함되어 있다.", () => {
   expect("Christoph").toMatch(/stop/);
 });
 ```
@@ -135,7 +135,7 @@ test("shoppingList에 beer가 포함되어 있다", () => {
 
 ## 예외 처리
 
-에러를 던져야 하는 함수를 테스트하고 싶다면, `toThrow`를 사용합니다.
+에러를 내뱉는 함수를 테스트하고 싶다면, `toThrow`를 사용합니다.
 
 ```jsx
 function compileAndroidCode() {
@@ -154,6 +154,6 @@ test("compileAndroidCode 함수는 에러를 내야 한다", () => {
 
 ## 더 알아보고 싶다면
 
-이건 그저 맛보기였을 뿐입니다. 사용 가능한 모든 Matcher 들을 보고 싶다면, [참고 문서](https://jestjs.io/docs/en/expect)를 확인하세요.
+이건 그저 맛보기였을 뿐입니다. 사용 가능한 모든 Matcher들을 보고 싶다면, [참고 문서](https://jestjs.io/docs/en/expect)를 확인하세요.
 
-사용 가능한 Matcher 들에 대해 배웠으니, 다음 단계에선 Jest 로 [비동기 코드를 테스트하는 방법]에 대해 배워보도록 하겠습니다.
+사용 가능한 Matcher들에 대해 배웠으니, 다음 단계에선 Jest로 [비동기 코드를 테스트하는 방법]에 대해 배워보도록 하겠습니다.
