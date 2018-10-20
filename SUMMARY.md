@@ -4,3 +4,4 @@
 - Introduction
   - [Getting Started](Introduction/GettingStarted.md)
   - [Using Matchers](Introduction/UsingMatchers.md)
+  - [Testing Asynchronous Code](Introduction/TestingAsynchronous.md)
