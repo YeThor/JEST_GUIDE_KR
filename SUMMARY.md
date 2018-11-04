@@ -5,3 +5,4 @@
   - [Getting Started](Introduction/0.GettingStarted.md)
   - [Using Matchers](Introduction/1.UsingMatchers.md)
   - [Testing Asynchronous Code](Introduction/2.TestingAsynchronousCode.md)
+  - [Setup and Teardown](Introduction/3.SetupAndTeardown.md)
