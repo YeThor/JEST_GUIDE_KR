@@ -249,6 +249,93 @@ test(<span class="hljs-string">&quot;&#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#
 });
 </code></pre>
 <h2 id="one-time-setup">One-Time Setup</h2>
+<p>&#xC885;&#xC885; &#xC0AC;&#xC804; &#xC791;&#xC5C5;&#xC744; &#xD30C;&#xC77C;&#xC758; &#xC2DC;&#xC791; &#xBD80;&#xBD84;&#xC5D0;&#xC11C; &#xD55C;&#xBC88;&#xB9CC; &#xC2E4;&#xD589;&#xD558;&#xACE0; &#xC2F6;&#xC744; &#xB54C;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC0AC;&#xC804; &#xC791;&#xC5C5;&#xC774; &#xBE44;&#xB3D9;&#xAE30;&#xC801;&#xC73C;&#xB85C; &#xC791;&#xB3D9;&#xD558;&#xB294; &#xCF54;&#xB4DC;&#xB77C;&#xBA74;, &#xAF64; &#xADC0;&#xCC2E;&#xC544;&#xC9C8; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xC774;&#xB7F0; &#xC0C1;&#xD669;&#xC77C; &#xB550; Jest &#xC758; <code>beforeAll</code>&#xACFC; <code>afterAll</code>&#xC744; &#xD65C;&#xC6A9;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC608;&#xB97C; &#xB4E4;&#xC5B4;, <code>initializeCityDatabase</code>&#xC640; <code>clearCityDatabase</code>&#xAC00; &#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130; &#xBCA0;&#xC774;&#xC2A4; &#xAD00;&#xB828; Promise&#xB97C; &#xBC18;&#xD658;&#xD55C;&#xB2E4;&#xACE0; &#xAC00;&#xC815;&#xD569;&#xC2DC;&#xB2E4;. &#xC774; &#xB370;&#xC774;&#xD130;&#xB294; &#xD14C;&#xC2A4;&#xD2B8;&#xB9C8;&#xB2E4; &#xC7AC;&#xC0AC;&#xC6A9;&#xB420; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACBD;&#xC6B0;&#xC5D4; &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xD14C;&#xC2A4;&#xD2B8; &#xCF54;&#xB4DC;&#xB97C; &#xC9E4; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">beforeAll(() =&gt; {
+  <span class="hljs-keyword">return</span> initializeCityDatabase();
+});
+
+afterAll(() =&gt; {
+  <span class="hljs-keyword">return</span> clearCityDatabase();
+});
+
+test(<span class="hljs-string">&quot;&#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xC5D4; Vienna&#xAC00; &#xD3EC;&#xD568;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&quot;</span>, () =&gt; {
+  expect(isCity(<span class="hljs-string">&quot;Vienna&quot;</span>)).toBeTruthy();
+});
+
+test(<span class="hljs-string">&quot;&#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xC5D4; San Juan&#xC774; &#xD3EC;&#xD568;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&quot;</span>, () =&gt; {
+  expect(isCity(<span class="hljs-string">&quot;San Juan&quot;</span>)).toBeTruthy();
+});
+</code></pre>
+<h2 id="scoping">Scoping</h2>
+<blockquote>
+<p>&#xBC94;&#xC704; &#xC81C;&#xD55C;</p>
+</blockquote>
+<p>&#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C;, <code>before</code>&#xC640; <code>after</code> &#xC740; &#xD55C; &#xD30C;&#xC77C; &#xB0B4;&#xC758; &#xBAA8;&#xB4E0; &#xD14C;&#xC2A4;&#xD2B8;&#xC5D0; &#xC801;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;. <code>describe</code> &#xC744; &#xC774;&#xC6A9;&#xD558;&#xBA74; &#xC77C;&#xBD80; &#xD14C;&#xC2A4;&#xD2B8;&#xB4E4;&#xC744; &#xADF8;&#xB8F9;&#xC9C0;&#xC744; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. <code>before</code>&#xC640; <code>after</code> &#xC774; <code>describe</code> &#xBE14;&#xB85D; &#xC548;&#xC5D0; &#xC788;&#xC744; &#xACBD;&#xC6B0;, &#xC774;&#xB4E4;&#xC740; &#xAC19;&#xC740; <code>describe</code> &#xBE14;&#xB85D; &#xB0B4;&#xC758; &#xD14C;&#xC2A4;&#xD2B8;&#xC5D0;&#xB9CC; &#xC801;&#xC6A9;&#xB420; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC608;&#xB97C; &#xB4E4;&#xC5B4;, &#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4; &#xBFD0;&#xB9CC; &#xC544;&#xB2C8;&#xB77C; &#xC74C;&#xC2DD; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4; &#xB610;&#xD55C; &#xD14C;&#xC2A4;&#xD2B8;&#xD574;&#xC57C; &#xD55C;&#xB2E4;&#xACE0; &#xAC00;&#xC815;&#xD569;&#xC2DC;&#xB2E4;. &#xC11C;&#xB85C; &#xB2E4;&#xB978; &#xAC83;&#xC744; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xAE30; &#xB54C;&#xBB38;&#xC5D0;, &#xAC01;&#xAC01;&#xC5D0; &#xB300;&#xD55C; &#xD14C;&#xC2A4;&#xD2B8; &#xD658;&#xACBD; &#xC791;&#xC5C5;&#xB3C4; &#xB2E4;&#xB974;&#xAC8C; &#xC218;&#xD589;&#xD574;&#xC57C; &#xD558;&#xB294; &#xC0C1;&#xD669;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx"><span class="hljs-comment">// &#xC774; &#xD30C;&#xC77C; &#xB0B4;&#xC758; &#xBAA8;&#xB4E0; &#xD14C;&#xC2A4;&#xD2B8;&#xC5D0; &#xC801;&#xC6A9;</span>
+beforeEach(() =? {
+  <span class="hljs-keyword">return</span> initializeCityDatabase();
+});
+
+test(<span class="hljs-string">&apos;&#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xC5D4; Vienna&#xAC00; &#xD3EC;&#xD568;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&apos;</span>, () =&gt; {
+  expect(isCity(<span class="hljs-string">&apos;Vienna&apos;</span>).toBeTruthy();
+});
+
+test(<span class="hljs-string">&apos;&#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xC5D4; San Juan&#xC774; &#xD3EC;&#xD568;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&apos;</span>, () =&gt; {
+  expect(isCity(<span class="hljs-string">&apos;San Juan&apos;</span>)).toBeTruthy();
+});
+
+describe(<span class="hljs-string">&apos;&#xB3C4;&#xC2DC;&#xB97C; &#xC74C;&#xC2DD;&#xC5D0; &#xB9E4;&#xCE6D;&#xC2DC;&#xD0A8;&#xB2E4;&apos;</span>, () =&gt; {
+  <span class="hljs-comment">// &#xC774; describe &#xBE14;&#xB85D; &#xB0B4;&#xBD80;&#xC5D0;&#xB9CC; &#xC801;&#xC6A9;</span>
+  beforeEach(()=&gt; {
+    <span class="hljs-keyword">return</span> initialFoodDatabase();
+  });
+
+  test(<span class="hljs-string">&apos;Vienna&#xB294; &#xC18C;&#xC138;&#xC9C0;&#xC758; &#xB3C4;&#xC2DC;&#xC774;&#xB2E4;&apos;</span>, () =&gt; {
+    expect(isValidCityFoodPair(<span class="hljs-string">&apos;Vienna&apos;</span>, <span class="hljs-string">&apos;Frank Sausage&apos;</span>)).toBe(<span class="hljs-literal">true</span>);
+  });
+
+  test(<span class="hljs-string">&apos;San Juan&#xC740; &#xCC44;&#xC18C;&#xC758; &#xB3C4;&#xC2DC;&#xC774;&#xB2E4;&apos;</span>, () =&gt; {
+    expect(isValidCityFoodPair(<span class="hljs-string">&apos;San Juan&apos;</span>, <span class="hljs-string">&apos;Carrot&apos;</span>)).toBe(<span class="hljs-literal">true</span>);
+  });
+})
+</code></pre>
+<p>&#xCD5C;&#xC0C1;&#xB2E8;&#xC5D0; &#xC704;&#xCE58;&#xD55C; <code>beforeEach</code>&#xC740; <code>describe</code> &#xBE14;&#xB85D; &#xB0B4;&#xC5D0; &#xC815;&#xC758;&#xB41C; <code>beforeEach</code>&#xBCF4;&#xB2E4; &#xBA3C;&#xC800; &#xC2E4;&#xD589;&#xB41C;&#xB2E4;&#xB294; &#xAC83;&#xC744; &#xAE30;&#xC5B5;&#xD558;&#xC138;&#xC694;. &#xC774;&#xB97C; &#xC720;&#xB150;&#xD574;&#xB454;&#xB2E4;&#xBA74; &#xBAA8;&#xB4E0; &#xD6C5;&#xC744; &#xC62C;&#xBC14;&#xB978; &#xC21C;&#xC11C;&#xB85C; &#xC2E4;&#xD589;&#xD558;&#xB294; &#xB370;&#xC5D0; &#xB3C4;&#xC6C0;&#xC744; &#xC904; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">beforeAll(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Scoped beforeAll&apos;</span>));
+afterAll(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Scoped afterAll&apos;</span>));
+beforeEach(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Scoped beforeEach&apos;</span>));
+afterEach(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Scoped afterEach&apos;</span>));
+test(<span class="hljs-string">&apos;&apos;</span>, ()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Scoped test&apos;</span>));
+
+describe(<span class="hljs-string">&apos;Scoped / Nested block&apos;</span>, () =&gt; {
+  beforeAll(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Nested beforeAll&apos;</span>));
+  afterAll(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Nested afterAll&apos;</span>));
+  beforeEach(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Nested beforeEach&apos;</span>));
+  afterEach(()= &gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Nested afterEach&apos;</span>));
+  test(<span class="hljs-string">&apos;&apos;</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Nested test&apos;</span>));
+});
+
+<span class="hljs-comment">// &#xCF58;&#xC194;&#xCD9C;&#xB825; &#xACB0;&#xACFC;&#xBB3C;</span>
+
+<span class="hljs-comment">// Scoped beforeAll</span>
+<span class="hljs-comment">// Scoped beforeEach</span>
+
+<span class="hljs-comment">// Scoped test</span>
+
+<span class="hljs-comment">// Scoped afterEach</span>
+
+<span class="hljs-comment">// Nested beforeAll</span>
+<span class="hljs-comment">// Scoped beforeEach</span>
+<span class="hljs-comment">// Nested beforeEach</span>
+
+<span class="hljs-comment">// Nested test</span>
+
+<span class="hljs-comment">// Nested afterEach</span>
+<span class="hljs-comment">// Scoped afterEach</span>
+<span class="hljs-comment">// Nested afterAll</span>
+<span class="hljs-comment">// Scoped afterAll</span>
+</code></pre>
 
                                 
                                 </section>
@@ -288,7 +375,7 @@ test(<span class="hljs-string">&quot;&#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"previous":{"title":"Testing Asynchronous Code","level":"1.2.3","depth":2,"path":"Introduction/2.TestingAsynchronousCode.md","ref":"Introduction/2.TestingAsynchronousCode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/3.SetupAndTeardown.md","mtime":"2018-11-04T09:34:29.587Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-04T09:38:07.135Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"previous":{"title":"Testing Asynchronous Code","level":"1.2.3","depth":2,"path":"Introduction/2.TestingAsynchronousCode.md","ref":"Introduction/2.TestingAsynchronousCode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/3.SetupAndTeardown.md","mtime":"2018-11-17T16:06:51.799Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-17T16:07:48.304Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
