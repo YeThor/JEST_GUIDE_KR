@@ -302,18 +302,18 @@ describe(<span class="hljs-string">&apos;&#xB3C4;&#xC2DC;&#xB97C; &#xC74C;&#xC2D
 })
 </code></pre>
 <p>&#xCD5C;&#xC0C1;&#xB2E8;&#xC5D0; &#xC704;&#xCE58;&#xD55C; <code>beforeEach</code>&#xC740; <code>describe</code> &#xBE14;&#xB85D; &#xB0B4;&#xC5D0; &#xC815;&#xC758;&#xB41C; <code>beforeEach</code>&#xBCF4;&#xB2E4; &#xBA3C;&#xC800; &#xC2E4;&#xD589;&#xB41C;&#xB2E4;&#xB294; &#xAC83;&#xC744; &#xAE30;&#xC5B5;&#xD558;&#xC138;&#xC694;. &#xC774;&#xB97C; &#xC720;&#xB150;&#xD574;&#xB454;&#xB2E4;&#xBA74; &#xBAA8;&#xB4E0; &#xD6C5;&#xC744; &#xC62C;&#xBC14;&#xB978; &#xC21C;&#xC11C;&#xB85C; &#xC2E4;&#xD589;&#xD558;&#xB294; &#xB370;&#xC5D0; &#xB3C4;&#xC6C0;&#xC744; &#xC904; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
-<pre><code class="lang-jsx">beforeAll(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Scoped beforeAll&apos;</span>));
-afterAll(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Scoped afterAll&apos;</span>));
-beforeEach(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Scoped beforeEach&apos;</span>));
-afterEach(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Scoped afterEach&apos;</span>));
-test(<span class="hljs-string">&apos;&apos;</span>, ()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Scoped test&apos;</span>));
+<pre><code class="lang-jsx">beforeAll(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Scoped beforeAll&quot;</span>));
+afterAll(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Scoped afterAll&quot;</span>));
+beforeEach(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Scoped beforeEach&quot;</span>));
+afterEach(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Scoped afterEach&quot;</span>));
+test(<span class="hljs-string">&quot;&quot;</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Scoped test&quot;</span>));
 
-describe(<span class="hljs-string">&apos;Scoped / Nested block&apos;</span>, () =&gt; {
-  beforeAll(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Nested beforeAll&apos;</span>));
-  afterAll(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Nested afterAll&apos;</span>));
-  beforeEach(()=&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Nested beforeEach&apos;</span>));
-  afterEach(()= &gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Nested afterEach&apos;</span>));
-  test(<span class="hljs-string">&apos;&apos;</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Nested test&apos;</span>));
+describe(<span class="hljs-string">&quot;Scoped / Nested block&quot;</span>, () =&gt; {
+  beforeAll(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Nested beforeAll&quot;</span>));
+  afterAll(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Nested afterAll&quot;</span>));
+  beforeEach(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Nested beforeEach&quot;</span>));
+  afterEach(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Nested afterEach&quot;</span>));
+  test(<span class="hljs-string">&quot;&quot;</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Nested test&quot;</span>));
 });
 
 <span class="hljs-comment">// &#xCF58;&#xC194;&#xCD9C;&#xB825; &#xACB0;&#xACFC;&#xBB3C;</span>
@@ -336,6 +336,64 @@ describe(<span class="hljs-string">&apos;Scoped / Nested block&apos;</span>, () 
 <span class="hljs-comment">// Nested afterAll</span>
 <span class="hljs-comment">// Scoped afterAll</span>
 </code></pre>
+<h2 id="order-of-execution-of-describe-and-test-blocks">Order of execution of describe and test blocks</h2>
+<blockquote>
+<p><code>describe</code>&#xC640; <code>test</code>&#xC758; &#xC2E4;&#xD589; &#xC21C;&#xC11C;</p>
+</blockquote>
+<p>Jest&#xB294; <code>test</code>&#xC774; &#xC2E4;&#xC81C;&#xB85C; &#xC2E4;&#xD589;&#xB418;&#xAE30; <em>&#xC804;&#xC5D0;</em> &#xBAA8;&#xB4E0; <code>describe</code>&#xC758; &#xD578;&#xB4E4;&#xB7EC;&#xB97C; &#xC2E4;&#xD589;&#xD569;&#xB2C8;&#xB2E4;. &#xC774;&#xB294; &#xC0AC;&#xC804;&#xC791;&#xC5C5; &#xBC0F; &#xD6C4;&#xC18D;&#xC791;&#xC5C5;&#xC744; <code>before*</code> &#xBC0F; <code>after*</code> &#xD578;&#xB4E4;&#xB7EC;&#xC5D0;&#xC11C; &#xBCC4;&#xB3C4;&#xB85C; &#xCC98;&#xB9AC;&#xD558;&#xB294; &#xB610; &#xB2E4;&#xB978; &#xC774;&#xC720;&#xC774;&#xAE30;&#xB3C4; &#xD569;&#xB2C8;&#xB2E4;. &#xD55C;&#xBC88; <code>describe</code> &#xB0B4;&#xBD80;&#xB97C; &#xD6D1;&#xACE0; &#xC9C0;&#xB098;&#xAC00;&#xBA74;, Jest&#xB294; &#xC21C;&#xC11C;&#xB300;&#xB85C; <code>test</code>&#xC744; &#xC2E4;&#xD589;&#xC2DC;&#xD0B5;&#xB2C8;&#xB2E4;. <code>test</code>&#xB294; &#xC120;&#xD589; <code>test</code>&#xAC00; &#xAE54;&#xB054;&#xD558;&#xAC8C; &#xC815;&#xB9AC;&#xB418;&#xACE0; &#xC644;&#xB8CC;&#xB420; &#xB54C;&#xAE4C;&#xC9C0; &#xCC28;&#xB840;&#xB97C; &#xAE30;&#xB2E4;&#xB9BD;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB2E4;&#xC74C;&#xC740; &#xC124;&#xBA85;&#xC744; &#xC704;&#xD55C; &#xD14C;&#xC2A4;&#xD2B8; &#xCF54;&#xB4DC;&#xC640; &#xCD9C;&#xB825; &#xACB0;&#xACFC;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">describe(<span class="hljs-string">&quot;outer&quot;</span>, () =&gt; {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;describe outer-a&quot;</span>);
+
+  describe(<span class="hljs-string">&quot;describe inner 1&quot;</span>, () =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;describe inner 1&quot;</span>);
+    test(<span class="hljs-string">&quot;test 1&quot;</span>, () =&gt; {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;test for describe inner 1&quot;</span>);
+      expect(<span class="hljs-literal">true</span>).toEqual(<span class="hljs-literal">true</span>);
+    });
+  });
+
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;describe outer-b&quot;</span>);
+
+  test(<span class="hljs-string">&quot;test 1&quot;</span>, () =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;test for describe outer&quot;</span>);
+    expect(<span class="hljs-literal">true</span>).toEqual(<span class="hljs-literal">true</span>);
+  });
+
+  describe(<span class="hljs-string">&quot;describe inner 2&quot;</span>, () =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;describe inner 2&quot;</span>);
+    test(<span class="hljs-string">&quot;test for describe inner 2&quot;</span>, () =&gt; {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;test for describe inner 2&quot;</span>);
+      expect(<span class="hljs-literal">false</span>).toEqual(<span class="hljs-literal">false</span>);
+    });
+  });
+
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;describe outer-c&quot;</span>);
+});
+
+<span class="hljs-comment">// describe outer-a</span>
+<span class="hljs-comment">// describe inner 1</span>
+<span class="hljs-comment">// describe outer-b</span>
+<span class="hljs-comment">// describe inner 2</span>
+<span class="hljs-comment">// describe outer-c</span>
+<span class="hljs-comment">// test for describe inner 1</span>
+<span class="hljs-comment">// test for describe outer</span>
+<span class="hljs-comment">// test for describe inner 2</span>
+</code></pre>
+<h2 id="general-advice">General Advice</h2>
+<blockquote>
+<p>&#xC77C;&#xBC18;&#xC801;&#xC778; &#xC870;&#xC5B8;</p>
+</blockquote>
+<p>&#xB9CC;&#xC57D; &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xC2E4;&#xD328;&#xD55C;&#xB2E4;&#xBA74;, &#xAC00;&#xC7A5; &#xBA3C;&#xC800; &#xCCB4;&#xD06C;&#xD574;&#xC57C;&#xD560; &#xAC83; &#xC911;&#xC758; &#xD558;&#xB098;&#xAC00; &#xBC14;&#xB85C; &#xD574;&#xB2F9; &#xD14C;&#xC2A4;&#xD2B8;&#xB9CC;&#xC774; &#xC720;&#xC77C;&#xD558;&#xAC8C; &#xC2E4;&#xD589;&#xB418;&#xB294; &#xACBD;&#xC6B0;&#xC5D0;&#xB3C4; &#xB611;&#xAC19;&#xC774; &#xC2E4;&#xD328;&#xD558;&#xB294;&#xC9C0;&#xC5D0; &#xB300;&#xD55C; &#xC720;&#xBB34;&#xC785;&#xB2C8;&#xB2E4;. Jest&#xC5D0;&#xC11C; &#xB2E8; &#xD558;&#xB098;&#xC758; <code>test</code>&#xB97C; &#xC2E4;&#xD589;&#xC2DC;&#xD0A4;&#xB294; &#xAC83;&#xC740; &#xB2E8;&#xC21C;&#xD569;&#xB2C8;&#xB2E4;. <code>test</code>&#xB97C; <code>test.only</code>&#xB85C; &#xC7A0;&#xAE50; &#xBC14;&#xAFD4;&#xBCF4;&#xAE30;&#xB9CC; &#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">test.only(<span class="hljs-string">&quot;&#xC2E4;&#xD589;&#xB418;&#xB294; &#xC720;&#xC77C;&#xD55C; &#xD14C;&#xC2A4;&#xD2B8;&#xC785;&#xB2C8;&#xB2E4;&quot;</span>, () =&gt; {
+  expect(<span class="hljs-literal">true</span>).toBe(<span class="hljs-literal">true</span>);
+});
+
+test(<span class="hljs-string">&quot;&#xC774; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xC2E4;&#xD589;&#xB418;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;&quot;</span>, () =&gt; {
+  expect(<span class="hljs-string">&quot;A&quot;</span>).toBe(<span class="hljs-string">&quot;A&quot;</span>);
+});
+</code></pre>
+<p>&#xD558;&#xB098;&#xC758; &#xD070; Test Suite &#xB0B4;&#xC5D0;&#xC11C; &#xD2B9;&#xC815; &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xC2E4;&#xD328;&#xD55C;&#xB2E4;&#xBA74;, &#xD574;&#xB2F9; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xB2E8;&#xB3C5;&#xC73C;&#xB85C; &#xC2E4;&#xD589;&#xC2DC;&#xCF1C; &#xBD05;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; &#xB2E8;&#xB3C5; &#xC2E4;&#xD589;&#xC2DC;&#xC5D0; &#xD574;&#xB2F9; &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xC131;&#xACF5;&#xD55C;&#xB2E4;&#xBA74;, &#xB3D9;&#xC77C; Test Suite &#xB0B4;&#xC758; &#xB2E4;&#xB978; &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xC774; &#xD14C;&#xC2A4;&#xD2B8;&#xC5D0; &#xAC04;&#xC12D;&#xD574; &#xC2E4;&#xD328;&#xB97C; &#xC77C;&#xC73C;&#xD0A4;&#xACE0; &#xC788;&#xC744; &#xD655;&#xB960;&#xC774; &#xB192;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774;&#xB7EC;&#xD55C; &#xBB38;&#xC81C;&#xB294; &#xAC01; &#xD14C;&#xC2A4;&#xD2B8;&#xB4E4;&#xC758; &#xACF5;&#xC720; state&#xB97C; <code>beforeEach</code>&#xB85C; &#xAE54;&#xB054;&#xD788; &#xC815;&#xB9AC;&#xD588;&#xC744; &#xB54C;&#xB3C4; &#xC885;&#xC885; &#xD574;&#xACB0;&#xB418;&#xACE4; &#xD569;&#xB2C8;&#xB2E4;. &#xC77C;&#xBD80; &#xACF5;&#xC720; state&#xAC00; &#xC758;&#xB3C4;&#xCE58;&#xC54A;&#xAC8C; &#xC218;&#xC815;&#xB418;&#xC5C8;&#xB294;&#xC9C0; &#xD655;&#xC778;&#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, <code>beforeEach</code>&#xB97C; &#xD65C;&#xC6A9;&#xD558;&#xC5EC; &#xB2E8;&#xC21C;&#xD788; &#xB370;&#xC774;&#xD130; &#xB85C;&#xADF8;&#xB9CC; &#xCC0D;&#xC5B4;&#xBCF4;&#xB294; &#xAC83;&#xB3C4; &#xC88B;&#xC740; &#xBC29;&#xBC95;&#xC785;&#xB2C8;&#xB2E4;.</p>
 
                                 
                                 </section>
@@ -375,7 +433,7 @@ describe(<span class="hljs-string">&apos;Scoped / Nested block&apos;</span>, () 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"previous":{"title":"Testing Asynchronous Code","level":"1.2.3","depth":2,"path":"Introduction/2.TestingAsynchronousCode.md","ref":"Introduction/2.TestingAsynchronousCode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/3.SetupAndTeardown.md","mtime":"2018-11-17T16:06:51.799Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-17T16:07:48.304Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"previous":{"title":"Testing Asynchronous Code","level":"1.2.3","depth":2,"path":"Introduction/2.TestingAsynchronousCode.md","ref":"Introduction/2.TestingAsynchronousCode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/3.SetupAndTeardown.md","mtime":"2018-11-22T15:43:10.431Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-22T15:44:11.047Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
