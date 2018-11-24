@@ -294,6 +294,41 @@ expect(someMockFunction.mock.instances.length).toBe(<span class="hljs-number">2<
 <span class="hljs-comment">// &#xC774; &#xD568;&#xC218;&#xC758; &#xCCAB;&#xBC88;&#xC9F8; &#xC778;&#xC2A4;&#xD134;&#xC2A4;&#xAC00; &#xB9AC;&#xD134;&#xD55C; &#xAC1D;&#xCCB4;&#xB294; &apos;test&apos;&#xB77C;&#xB294; &#xAC12;&#xC744; &#xAC00;&#xC9C4; &apos;name&apos; &#xD504;&#xB85C;&#xD37C;&#xD2F0;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xB2E4;.</span>
 expect(someMockFunction.mock.instances[<span class="hljs-number">0</span>].name).toEqual(<span class="hljs-string">&quot;test&quot;</span>);
 </code></pre>
+<h2 id="mock-return-values">Mock Return Values</h2>
+<blockquote>
+<p>&#xBAA9; &#xB9AC;&#xD134; &#xAC12;</p>
+</blockquote>
+<p>Mock function&#xC740; &#xD14C;&#xC2A4;&#xD2B8; &#xC911;&#xC778; &#xCF54;&#xB4DC;&#xC5D0; &#xD2B9;&#xC815; &#xAC12;&#xC744; &#xC8FC;&#xC785;&#xD560; &#xC218; &#xC788;&#xAC8C; &#xD574;&#xC90D;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> myMock = jest.fn();
+<span class="hljs-built_in">console</span>.log(myMock());
+
+myMock
+  .mockReturnValueOnce(<span class="hljs-number">10</span>)
+  .mockReturnValueOnce(<span class="hljs-string">&quot;x&quot;</span>)
+  .mockReturnValue(<span class="hljs-literal">true</span>);
+
+<span class="hljs-built_in">console</span>.log(myMock(), myMock(), myMock(), myMock());
+<span class="hljs-comment">// &gt; 10, &apos;x&apos;, true, true</span>
+</code></pre>
+<p>Mock function&#xC740; functional continuation-passing style&#xC744;(<em>&#xC5ED;&#xC8FC;: &#xAC12;&#xC744; &#xBC18;&#xD658;&#xD558;&#xC9C0; &#xC54A;&#xACE0; &#xB2E4;&#xC74C; &#xB2E8;&#xACC4;&#xC5D0; &#xC2E4;&#xD589; &#xD750;&#xB984;&#xC744; &#xB118;&#xAE30;&#xB294; &#xAC83; <a href="https://en.wikibooks.org/wiki/Haskell/Continuation_passing_style" target="_blank">&#xCC38;&#xACE0;</a></em> ) &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB3C4; &#xC544;&#xC8FC; &#xD6A8;&#xACFC;&#xC801;&#xC785;&#xB2C8;&#xB2E4;. &#xC2E4;&#xC81C; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC758; &#xB3D9;&#xC791;&#xC744; &#xC7AC;&#xCC3D;&#xC870;&#xD558;&#xB294; &#xBCF5;&#xC7A1;&#xD55C; stub(<em>&#xC5ED;&#xC8FC;: <a href="https://terms.naver.com/entry.nhn?docId=863173&amp;cid=42346&amp;categoryId=42346" target="_blank">&#xD14C;&#xC2A4;&#xD2B8; &#xC2A4;&#xD141;</a></em>]&#xC758; &#xC0AC;&#xC6A9;&#xC744; &#xD53C;&#xD558;&#xACE0;, &#xD14C;&#xC2A4;&#xD2B8; &#xC2E4;&#xD589; &#xC9C1;&#xC804;&#xC5D0; &#xC6D0;&#xD558;&#xB294; &#xAC12;&#xC744; &#xC9C1;&#xC811; &#xC8FC;&#xC785;&#xD560; &#xC218; &#xC788;&#xAC8C; &#xD574;&#xC90D;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> filterTestFn = jest.fn();
+
+<span class="hljs-comment">// &#xCCAB; &#xD638;&#xCD9C; &#xC2DC;&#xC5D0;&#xB294; &apos;true&apos;&#xB97C; &#xBC18;&#xD658;&#xD558;&#xAC8C; &#xD558;&#xACE0;,</span>
+<span class="hljs-comment">// &#xB450;&#xBC88;&#xC9F8; &#xD638;&#xCD9C; &#xC2DC;&#xC5D0;&#xB294; &apos;false&apos;&#xB97C; &#xBC18;&#xD658;&#xD558;&#xAC8C; &#xD55C;&#xB2E4;</span>
+filterTestFn.mockReturnValueOnce(<span class="hljs-literal">true</span>).mockReturnValueOnce(<span class="hljs-literal">false</span>);
+
+<span class="hljs-keyword">const</span> result = [<span class="hljs-number">11</span>, <span class="hljs-number">12</span>].filter(filterTestFn);
+
+<span class="hljs-built_in">console</span>.log(result);
+<span class="hljs-comment">// &gt; [11]</span>
+<span class="hljs-built_in">console</span>.log(filterTestFn.mock.calls);
+<span class="hljs-comment">// &gt; [ [11], [12] ]</span>
+</code></pre>
+<p>&#xD604;&#xC2E4;&#xC5D0;&#xC11C; &#xBCFC; &#xC218; &#xC788;&#xB294; &#xB300;&#xBD80;&#xBD84;&#xC758; &#xC608;&#xC2DC;&#xB294; &#xC0AC;&#xC2E4; &#xC758;&#xC874;&#xC131;&#xC744; &#xB748; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC5D0; &#xC5F0;&#xACB0;&#xB41C; Mock function&#xC774;&#xB098; &#xC124;&#xC815; &#xB4F1;&#xC774;&#xC9C0;&#xB9CC;, &#xC801;&#xC6A9;&#xB418;&#xB294; &#xAE30;&#xC220;&#xC740; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774;&#xB807;&#xAC8C; &#xD568;&#xC218; &#xB0B4;&#xBD80;&#xB97C; &#xC9C1;&#xC811;&#xC801;&#xC73C;&#xB85C; &#xD14C;&#xC2A4;&#xD2B8;&#xD574;&#xC57C; &#xD558;&#xC9C0; &#xC54A;&#xC544;&#xB3C4; &#xB418;&#xB294; &#xACBD;&#xC6B0;&#xC5D0;&#xC120;, &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xC704;&#xD574; &#xB85C;&#xC9C1;&#xC744; &#xC0C8;&#xB85C; &#xAD6C;&#xD604;&#xD558;&#xC9C0; &#xC54A;&#xC544;&#xB3C4; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<h2 id="mocking-modules">Mocking Modules</h2>
+<blockquote>
+<p>&#xBAA8;&#xB4C8; &#xBAA8;&#xD0B9;&#xD558;&#xAE30;</p>
+</blockquote>
 
                                 
                                 </section>
@@ -333,7 +368,7 @@ expect(someMockFunction.mock.instances[<span class="hljs-number">0</span>].name)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Mock Functions","level":"1.2.5","depth":2,"previous":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"path":"Introduction/3.SetupAndTeardown.md","ref":"Introduction/3.SetupAndTeardown.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/4.MockFunctions.md","mtime":"2018-11-23T17:32:22.711Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-23T17:33:20.424Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Mock Functions","level":"1.2.5","depth":2,"previous":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"path":"Introduction/3.SetupAndTeardown.md","ref":"Introduction/3.SetupAndTeardown.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/4.MockFunctions.md","mtime":"2018-11-24T18:04:43.341Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T18:05:50.986Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
