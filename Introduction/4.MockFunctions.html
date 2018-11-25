@@ -329,6 +329,77 @@ filterTestFn.mockReturnValueOnce(<span class="hljs-literal">true</span>).mockRet
 <blockquote>
 <p>&#xBAA8;&#xB4C8; &#xBAA8;&#xD0B9;&#xD558;&#xAE30;</p>
 </blockquote>
+<p>API&#xB97C; &#xD1B5;&#xD574; &#xC0AC;&#xC6A9;&#xC790; &#xC815;&#xBCF4;&#xB97C; &#xBD88;&#xB7EC;&#xC624;&#xB294; &#xD074;&#xB798;&#xC2A4;&#xAC00; &#xC788;&#xB2E4;&#xACE0; &#xAC00;&#xC815;&#xD569;&#xC2DC;&#xB2E4;. &#xADF8; &#xD074;&#xB798;&#xC2A4;&#xB294; <a href="https://github.com/axios/axios" target="_blank">axios</a>&#xB97C; &#xC774;&#xC6A9;&#xD574; API&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xACE0;, &#xBAA8;&#xB4E0; &#xC720;&#xC800; &#xC815;&#xBCF4;&#xB97C; &#xB2F4;&#xACE0; &#xC788;&#xB294; <code>data</code> &#xC18D;&#xC131;&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// users.js</span>
+<span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;axios&quot;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Users</span> </span>{
+  <span class="hljs-keyword">static</span> all() {
+    <span class="hljs-keyword">return</span> axios.get(<span class="hljs-string">&quot;/users.json&quot;</span>).then(resp =&gt; resp.data);
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Users;
+</code></pre>
+<p>&#xC774;&#xC81C; &#xC2E4;&#xC81C; API&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xC9C0; &#xC54A;&#xACE0; &#xC774; &#xBA54;&#xC18C;&#xB4DC;&#xB97C; &#xD14C;&#xC2A4;&#xD2B8;&#xD574;&#xBD05;&#xC2DC;&#xB2E4;. &#xC2E4;&#xC81C; API &#xD638;&#xCD9C;&#xC744; &#xD558;&#xC9C0; &#xC54A;&#xB294; &#xC774;&#xC720;&#xB294;, &#xB290;&#xB9AC;&#xACE0; &#xAE68;&#xC9C0;&#xAE30; &#xC26C;&#xC6B4; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xB9CC;&#xB4DC;&#xB294; &#xAC83;&#xC744; &#xD53C;&#xD558;&#xAE30; &#xC704;&#xD568;&#xC785;&#xB2C8;&#xB2E4;. <code>jest.mock(...)</code>&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; axios &#xBAA8;&#xB4C8;&#xC744; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xD749;&#xB0B4;&#xB0BC; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xD55C;&#xBC88; &#xD749;&#xB0B4;&#xB0B8; &#xBAA8;&#xB4C8;&#xC5D0; &#xB300;&#xD574;&#xC11C;&#xB294; <code>mockResolvedValue</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB294;&#xB370;, &#xC774;&#xB97C; <code>.get</code>&#xC5D0; &#xC801;&#xC6A9;&#xD558;&#xC5EC; &#xD14C;&#xC2A4;&#xD2B8;&#xC6A9; &#xB370;&#xC774;&#xD130;&#xB97C; &#xB9AC;&#xD134;&#xD558;&#xAC8C;&#xB054; &#xB9CC;&#xB4E4;&#xC5B4; &#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC0AC;&#xC2E4;&#xC0C1;, &#xC6B0;&#xB9AC;&#xB294; <code>axios.get(&apos;/users.json&apos;)</code> &#xC774; &#xAC00;&#xC9DC; &#xC751;&#xB2F5; &#xB370;&#xC774;&#xD130;&#xB97C; &#xB9AC;&#xD134;&#xD558;&#xAE30;&#xB97C; &#xC6D0;&#xD558;&#xB294; &#xAC81;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// users.test.js</span>
+<span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;axios&quot;</span>;
+<span class="hljs-keyword">import</span> Users <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./users&quot;</span>;
+
+jest.mock(<span class="hljs-string">&quot;axios&quot;</span>);
+
+test(<span class="hljs-string">&quot;&#xC720;&#xC800; &#xC815;&#xBCF4;&#xB97C; &#xBD88;&#xB7EC;&#xC640;&#xC57C; &#xD55C;&#xB2E4;&quot;</span>, () =&gt; {
+  <span class="hljs-keyword">const</span> resp = { data: [{ name: <span class="hljs-string">&quot;Bob&quot;</span> }] };
+  axios.get.mockResolvedValue(resp);
+
+  <span class="hljs-comment">// &#xACBD;&#xC6B0;&#xC5D0; &#xB530;&#xB77C;&#xC120; &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xC4F8; &#xC218;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</span>
+  <span class="hljs-comment">// axios.get.mockImplementation(()=&gt; Promise.resolve(resp))</span>
+
+  <span class="hljs-keyword">return</span> Users.all().then(users =&gt; expect(users).toEqual(resp.data));
+});
+</code></pre>
+<h2 id="mock-implementations">Mock Implementations</h2>
+<blockquote>
+<p>&#xC124;&#xACC4; &#xBAA8;&#xD0B9;&#xD558;&#xAE30;</p>
+</blockquote>
+<p>&#xB9AC;&#xD134;&#xAC12;&#xC744; &#xD2B9;&#xC815;&#xD558;&#xB294; &#xBC29;&#xBC95;&#xB9D0;&#xACE0;&#xB3C4;, &#xD568;&#xC218;&#xC758; &#xB0B4;&#xBD80; &#xC124;&#xACC4; &#xC790;&#xCCB4;&#xB97C; &#xBAA8;&#xD0B9;&#xC73C;&#xB85C; &#xB300;&#xCCB4;&#xD588;&#xC744; &#xB54C; &#xB354; &#xC720;&#xC6A9;&#xD55C; &#xACBD;&#xC6B0;&#xB4E4;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACBD;&#xC6B0;&#xC5D4; mock function&#xC5D0; <code>jest.fn</code>&#xC774;&#xB098; <code>mockImplementationOnce</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// <span class="hljs-doctag">FIXME:</span> &#xC608;&#xC81C;&#xAC00; &#xC774;&#xC0C1;&#xD574;&#xC11C; Jest &#xACF5;&#xC2DD; &#xC800;&#xC7A5;&#xC18C;&#xC5D0; &#xC774;&#xC288; &#xB9AC;&#xD3EC;&#xD305;&#xD568;. &#xCD94;&#xD6C4; F/U</span>
+<span class="hljs-keyword">const</span> myMockFn = jest.fn(cb =&gt; cb(<span class="hljs-literal">null</span>, <span class="hljs-literal">true</span>));
+
+myMockFn((err, val) =&gt; <span class="hljs-built_in">console</span>.log(val));
+<span class="hljs-comment">// &gt; true</span>
+
+myMockFn((err, val) =&gt; <span class="hljs-built_in">console</span>.log(val));
+<span class="hljs-comment">// &gt; true</span>
+</code></pre>
+<p><code>mockImplementation</code> &#xBA54;&#xC18C;&#xB4DC;&#xB294; &#xD0C0; &#xBAA8;&#xB4C8;&#xC5D0;&#xC11C; &#xD30C;&#xC0DD;&#xB41C; &#xD568;&#xC218;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xD604;&#xC744; &#xB300;&#xCCB4;&#xD558;&#xC5EC; &#xC815;&#xC758;&#xD558;&#xACE0; &#xC2F6;&#xC744; &#xB54C; &#xC720;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// foo.js</span>
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// some implementation;</span>
+};
+
+<span class="hljs-comment">// test.js</span>
+jest.mock(<span class="hljs-string">&quot;../foo&quot;</span>); <span class="hljs-comment">// &#xC790;&#xB3D9; &#xBAA8;&#xD0B9;</span>
+<span class="hljs-keyword">const</span> foo = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;../foo&quot;</span>);
+
+<span class="hljs-comment">// &#xC774;&#xC81C; foo&#xB294; mock function&#xC785;&#xB2C8;&#xB2E4;</span>
+foo.mockImplementation(() =&gt; <span class="hljs-number">42</span>);
+foo();
+<span class="hljs-comment">// &gt; 42</span>
+</code></pre>
+<p>&#xD568;&#xC218;&#xB97C; &#xC5EC;&#xB7EC;&#xBC88; &#xD638;&#xCD9C;&#xD560; &#xB54C; &#xB2E4;&#xB978; &#xACB0;&#xACFC;&#xAC12;&#xC774; &#xB098;&#xC624;&#xAC8C;&#xB054; &#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, <code>mockImplementationOnce</code> &#xBA54;&#xC18C;&#xB4DC;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> myMockFn = jest
+  .fn()
+  .mockImplementationOnce(cb =&gt; cb(<span class="hljs-literal">null</span>, <span class="hljs-literal">true</span>))
+  .mockImplementationOnce(cb =&gt; cb(<span class="hljs-literal">null</span>, <span class="hljs-literal">false</span>));
+
+myMockFn((err, val) =&gt; <span class="hljs-built_in">console</span>.log(val));
+<span class="hljs-comment">// &gt; true</span>
+
+myMockFn((err, val) =&gt; <span class="hljs-built_in">console</span>.log(val));
+<span class="hljs-comment">// &gt; false</span>
+</code></pre>
 
                                 
                                 </section>
@@ -368,7 +439,7 @@ filterTestFn.mockReturnValueOnce(<span class="hljs-literal">true</span>).mockRet
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Mock Functions","level":"1.2.5","depth":2,"previous":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"path":"Introduction/3.SetupAndTeardown.md","ref":"Introduction/3.SetupAndTeardown.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/4.MockFunctions.md","mtime":"2018-11-24T18:04:43.341Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T18:05:50.986Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Mock Functions","level":"1.2.5","depth":2,"previous":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"path":"Introduction/3.SetupAndTeardown.md","ref":"Introduction/3.SetupAndTeardown.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/4.MockFunctions.md","mtime":"2018-11-25T16:49:06.889Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-25T16:49:40.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
