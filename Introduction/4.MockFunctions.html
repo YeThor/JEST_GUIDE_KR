@@ -400,6 +400,50 @@ myMockFn((err, val) =&gt; <span class="hljs-built_in">console</span>.log(val));
 myMockFn((err, val) =&gt; <span class="hljs-built_in">console</span>.log(val));
 <span class="hljs-comment">// &gt; false</span>
 </code></pre>
+<p><code>mockImplementationOnce</code>&#xB85C; &#xC815;&#xC758;&#xB41C; &#xAD6C;&#xD604;&#xC774; &#xD55C;&#xBC88; &#xC2E4;&#xD589;&#xB41C; &#xB2E4;&#xC74C;&#xBD80;&#xD130;&#xB294;, (&#xB9CC;&#xC57D; &#xC815;&#xC758;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&#xBA74;) <code>jest.fn</code>&#xC73C;&#xB85C; &#xC138;&#xD305;&#xB41C; &#xAE30;&#xC874; &#xAD6C;&#xD604;&#xC744; &#xB530;&#xB77C; &#xC2E4;&#xD589;&#xB420; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> myMockFn = jest
+  .fn(()=&gt; <span class="hljs-string">&apos;default&apos;</span>)
+  .mockImplementationOnce(()=&gt; <span class="hljs-string">&apos;first call&apos;</span>);
+  .mockImplementationOnce(()=&gt; <span class="hljs-string">&apos;second call&apos;</span>);
+
+<span class="hljs-built_in">console</span>.log(myMockFn(), myMockFn(), myMockFn(), myMockFn());
+<span class="hljs-comment">// &gt; &apos;first call&apos;, &apos;second call&apos;, &apos;default&apos;, &apos;default&apos;</span>
+</code></pre>
+<p>&#xD56D;&#xC0C1; <code>this</code>&#xB97C; &#xB9AC;&#xD134;&#xD574;&#xC57C;&#xD558;&#xB294; &#xBA54;&#xC18C;&#xB4DC;&#xC5D0; &#xB300;&#xD574;&#xC11C;&#xB294;, <code>.mockReturnThis()</code>&#xB77C;&#xB294; &#xB2EC;&#xCF64;&#xD55C; &#xBB38;&#xBC95; &#xC124;&#xD0D5;&#xC744; &#xC4F8; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> myObj = {
+  myMethod: jest.fn().mockReturnThis()
+};
+
+<span class="hljs-comment">// &#xC774;&#xB294; &#xB2E4;&#xC74C; &#xCF54;&#xB4DC;&#xC640; &#xB3D9;&#xC77C;&#xD569;&#xB2C8;&#xB2E4;</span>
+
+<span class="hljs-keyword">const</span> otherObj = {
+  myMethod: jest.fn(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+  })
+};
+</code></pre>
+<h2 id="mock-names">Mock Names</h2>
+<p>&#xC6D0;&#xD55C;&#xB2E4;&#xBA74; mock function&#xC5D0; &#xC774;&#xB984;&#xC744; &#xBD80;&#xC5EC;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xC774;&#xB984;&#xC740; &#xD14C;&#xC2A4;&#xD2B8; &#xC5D0;&#xB7EC; &#xACB0;&#xACFC;&#xCC3D;&#xC5D0;&#xC11C; &quot;jest.fn()&quot; &#xB300;&#xC2E0; &#xB098;&#xD0C0;&#xB0A0; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xD14C;&#xC2A4;&#xD2B8; &#xACB0;&#xACFC;&#xCC3D;&#xC5D0;&#xC11C; &#xC5D0;&#xB7EC;&#xB97C; &#xBC1C;&#xC0DD;&#xC2DC;&#xD0A4;&#xB294; mock function&#xC744; &#xBE60;&#xB974;&#xAC8C; &#xBD84;&#xBCC4;&#xD574;&#xB0B4;&#xACE0; &#xC2F6;&#xC744; &#xB54C; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> myMockFn = jest
+  .fn()
+  .mockReturnValue(<span class="hljs-string">&quot;default&quot;</span>)
+  .mockImplementation(scalar =&gt; <span class="hljs-number">42</span> + scalar)
+  .mockName(<span class="hljs-string">&quot;add42&quot;</span>);
+</code></pre>
+<h2 id="custom-matchers">Custom Matchers</h2>
+<p>&#xB9C8;&#xC9C0;&#xB9C9;&#xC73C;&#xB85C;, mock function&#xC774; &#xC5B4;&#xB5A4; &#xC2DD;&#xC73C;&#xB85C; &#xD638;&#xCD9C;&#xB418;&#xB294;&#xC9C0; &#xB354;&#xC6B1; &#xB2E8;&#xC21C;&#xD558;&#xAC8C; assert&#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, &#xB2E4;&#xC74C;&#xC758; custom matcher&#xB97C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// mock function&#xC740; &#xCD5C;&#xC18C; 1&#xBC88; &#xC774;&#xC0C1; &#xD638;&#xCD9C;&#xB41C;&#xB2E4;</span>
+expect(mockFunc).toBeCalled();
+
+<span class="hljs-comment">// mock function&#xC740; &#xD2B9;&#xC815; &#xC804;&#xB2EC;&#xC778;&#xC790;&#xB85C; &#xCD5C;&#xC18C; 1&#xBC88; &#xC774;&#xC0C1; &#xD638;&#xCD9C;&#xB41C;&#xB2E4;</span>
+expect(mockFunc).toBeCalledWith(arg1, arg2);
+
+<span class="hljs-comment">// mock function&#xC740; &#xB9C8;&#xC9C0;&#xB9C9;&#xC5D0; &#xD2B9;&#xC815; &#xC804;&#xB2EC;&#xC778;&#xC790;&#xB85C; &#xD638;&#xCD9C;&#xB41C;&#xB2E4;</span>
+expect(mockFunc).lastCalledWith(arg1, arg2);
+
+<span class="hljs-comment">// mock&#xC758; &#xC774;&#xB984;&#xACFC; &#xBAA8;&#xB4E0; &#xD638;&#xCD9C;&#xC740; &#xC2A4;&#xB0C5;&#xC0F7;&#xC73C;&#xB85C; &#xAE30;&#xB85D;&#xB41C;&#xB2E4;</span>
+expect(mockFunc).toMatchSnapshot();
+</code></pre>
 
                                 
                                 </section>
@@ -439,7 +483,7 @@ myMockFn((err, val) =&gt; <span class="hljs-built_in">console</span>.log(val));
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Mock Functions","level":"1.2.5","depth":2,"previous":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"path":"Introduction/3.SetupAndTeardown.md","ref":"Introduction/3.SetupAndTeardown.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/4.MockFunctions.md","mtime":"2018-11-25T16:49:06.889Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-25T16:49:40.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Mock Functions","level":"1.2.5","depth":2,"previous":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"path":"Introduction/3.SetupAndTeardown.md","ref":"Introduction/3.SetupAndTeardown.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/4.MockFunctions.md","mtime":"2018-11-26T16:35:05.994Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-26T16:36:12.213Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
