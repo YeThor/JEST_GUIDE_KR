@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="5.JestPlatform.html" />
+    
     
     <link rel="prev" href="3.SetupAndTeardown.html" />
     
@@ -172,6 +174,19 @@
             
                     
                     Mock Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="5.JestPlatform.html">
+            
+                <a href="5.JestPlatform.html">
+            
+                    
+                    Jest Platform
             
                 </a>
             
@@ -431,7 +446,7 @@ myMockFn((err, val) =&gt; <span class="hljs-built_in">console</span>.log(val));
   .mockName(<span class="hljs-string">&quot;add42&quot;</span>);
 </code></pre>
 <h2 id="custom-matchers">Custom Matchers</h2>
-<p>&#xB9C8;&#xC9C0;&#xB9C9;&#xC73C;&#xB85C;, mock function&#xC774; &#xC5B4;&#xB5A4; &#xC2DD;&#xC73C;&#xB85C; &#xD638;&#xCD9C;&#xB418;&#xB294;&#xC9C0; &#xB354;&#xC6B1; &#xB2E8;&#xC21C;&#xD558;&#xAC8C; assert&#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, &#xB2E4;&#xC74C;&#xC758; custom matcher&#xB97C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB9C8;&#xC9C0;&#xB9C9;&#xC73C;&#xB85C;, mock function&#xC774; &#xC5B4;&#xB5A4; &#xC2DD;&#xC73C;&#xB85C; &#xD638;&#xCD9C;&#xB418;&#xB294;&#xC9C0; &#xB354;&#xC6B1; &#xB2E8;&#xC21C;&#xD558;&#xAC8C; assert&#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, &#xAE30;&#xBCF8;&#xC73C;&#xB85C; &#xCD94;&#xAC00;&#xB41C; &#xB2E4;&#xC74C; custom matcher&#xB97C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-js"><span class="hljs-comment">// mock function&#xC740; &#xCD5C;&#xC18C; 1&#xBC88; &#xC774;&#xC0C1; &#xD638;&#xCD9C;&#xB41C;&#xB2E4;</span>
 expect(mockFunc).toBeCalled();
 
@@ -444,6 +459,28 @@ expect(mockFunc).lastCalledWith(arg1, arg2);
 <span class="hljs-comment">// mock&#xC758; &#xC774;&#xB984;&#xACFC; &#xBAA8;&#xB4E0; &#xD638;&#xCD9C;&#xC740; &#xC2A4;&#xB0C5;&#xC0F7;&#xC73C;&#xB85C; &#xAE30;&#xB85D;&#xB41C;&#xB2E4;</span>
 expect(mockFunc).toMatchSnapshot();
 </code></pre>
+<p>&#xC704;&#xC758; Matcher&#xB4E4;&#xC740; <code>.mock</code> &#xD504;&#xB85C;&#xD37C;&#xD2F0;&#xB97C; &#xC870;&#xC0AC;&#xD558;&#xB294; &#xC77C;&#xBC18;&#xC801;&#xC778; &#xD615;&#xD0DC;&#xC758; &#xBB38;&#xBC95; &#xC124;&#xD0D5;&#xC77C; &#xBFD0;&#xC785;&#xB2C8;&#xB2E4;. &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xB354; &#xAD6C;&#xCCB4;&#xD654;&#xD558;&#xACE0; &#xC2F6;&#xAC70;&#xB098; &#xB354; &#xC120;&#xD638;&#xD558;&#xB294; &#xBC29;&#xC2DD;&#xC774; &#xC788;&#xB2E4;&#xBA74;, &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xC9C1;&#xC811; &#xACE0;&#xCCD0;&#xC11C; &#xC791;&#xC5C5;&#xD560; &#xC218;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// mock function&#xC740; &#xCD5C;&#xC18C; 1&#xBC88; &#xC774;&#xC0C1; &#xD638;&#xCD9C;&#xB41C;&#xB2E4;</span>
+expect(mockFunc.mock.calls.length).toBeGreaterThan(<span class="hljs-number">0</span>);
+
+<span class="hljs-comment">// mock function&#xC740; &#xD2B9;&#xC815; &#xC804;&#xB2EC;&#xC778;&#xC790;&#xB85C; &#xCD5C;&#xC18C; 1&#xBC88; &#xC774;&#xC0C1; &#xD638;&#xCD9C;&#xB41C;&#xB2E4;</span>
+expect(mockFunc.mock.calls).toContain([arg1, arg2]);
+
+<span class="hljs-comment">// mock function&#xC740; &#xB9C8;&#xC9C0;&#xB9C9;&#xC5D0; &#xD2B9;&#xC815; &#xC804;&#xB2EC;&#xC778;&#xC790;&#xB85C; &#xD638;&#xCD9C;&#xB41C;&#xB2E4;</span>
+expect(mockFunc.mock.calls[mockFunc.mock.calls.length - <span class="hljs-number">1</span>]).toEqual([
+  arg1,
+  arg2
+]);
+
+<span class="hljs-comment">// mock function&#xC774; &#xB9C8;&#xC9C0;&#xB9C9;&#xC73C;&#xB85C; &#xD638;&#xCD9C;&#xB410;&#xC744; &#xB54C; &#xCCAB;&#xBC88;&#xC9F8; &#xC804;&#xB2EC;&#xC778;&#xC790;&#xB294; 42&#xC774;&#xB2E4;</span>
+<span class="hljs-comment">// note: &#xC774;&#xCC98;&#xB7FC; &#xAD6C;&#xCCB4;&#xC801;&#xC778; assertion&#xC5D0; &#xB300;&#xD574;&#xC11C;&#xB294; &#xBB38;&#xBC95; &#xC124;&#xD0D5;&#xC774; &#xC81C;&#xACF5;&#xB418;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;</span>
+expect(mockFunc.mock.calls[mockFunc.mock.calls.length - <span class="hljs-number">1</span>][<span class="hljs-number">0</span>]).toBe(<span class="hljs-number">42</span>);
+
+<span class="hljs-comment">// &#xC2A4;&#xB0C5;&#xC0F7;&#xC740; mock function&#xC774; &#xB3D9;&#xC77C;&#xD55C; &#xD69F;&#xC218;, &#xB3D9;&#xC77C;&#xD55C; &#xC21C;&#xC11C;, &#xB3D9;&#xC77C;&#xD55C; &#xC804;&#xB2EC;&#xC778;&#xC790;&#xC640; &#xD568;&#xAF10; &#xD638;&#xCD9C;&#xB418;&#xC5C8;&#xB294;&#xC9C0; &#xCCB4;&#xD06C;&#xD560; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xB610;&#xD55C; &#xC774;&#xB984;&#xC5D0; &#xB300;&#xD574;&#xC11C;&#xB3C4; assert &#xD569;&#xB2C8;&#xB2E4;</span>
+expect(mockFunc.mock.calls).toEqual([[arg1, arg2]]);
+expect(mockFunc.mock.getMockName()).toBe(<span class="hljs-string">&quot;a mock name&quot;</span>);
+</code></pre>
+<p>Matcher&#xC758; &#xC804;&#xCCB4; &#xB9AC;&#xC2A4;&#xD2B8;&#xB97C; &#xBCF4;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, <a href="https://jestjs.io/docs/en/expect" target="_blank">&#xCC38;&#xC870; &#xBB38;&#xC11C;</a>&#xB97C; &#xD655;&#xC778;&#xD558;&#xC2DC;&#xAE30; &#xBC14;&#xB78D;&#xB2C8;&#xB2E4;.</p>
 
                                 
                                 </section>
@@ -471,10 +508,14 @@ expect(mockFunc).toMatchSnapshot();
 
             
                 
-                <a href="3.SetupAndTeardown.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Setup and Teardown">
+                <a href="3.SetupAndTeardown.html" class="navigation navigation-prev " aria-label="Previous page: Setup and Teardown">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="5.JestPlatform.html" class="navigation navigation-next " aria-label="Next page: Jest Platform">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -483,7 +524,7 @@ expect(mockFunc).toMatchSnapshot();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Mock Functions","level":"1.2.5","depth":2,"previous":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"path":"Introduction/3.SetupAndTeardown.md","ref":"Introduction/3.SetupAndTeardown.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/4.MockFunctions.md","mtime":"2018-11-26T16:35:05.994Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-26T16:36:12.213Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Mock Functions","level":"1.2.5","depth":2,"next":{"title":"Jest Platform","level":"1.2.6","depth":2,"path":"Introduction/5.JestPlatform.md","ref":"Introduction/5.JestPlatform.md","articles":[]},"previous":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"path":"Introduction/3.SetupAndTeardown.md","ref":"Introduction/3.SetupAndTeardown.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/4.MockFunctions.md","mtime":"2018-11-27T15:44:56.517Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-27T15:47:30.117Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
