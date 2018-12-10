@@ -243,6 +243,23 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="jest-platform">Jest Platform</h1>
+<p>Jest&#xC758; &#xC77C;&#xBD80; &#xD2B9;&#xC9D5;&#xB4E4;&#xC744; &#xACE8;&#xB77C; &#xB3C5;&#xB9BD;&#xC801;&#xC778; standalone &#xD328;&#xD0A4;&#xC9C0;&#xB85C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC0AC;&#xC6A9; &#xAC00;&#xB2A5;&#xD55C; &#xD328;&#xD0A4;&#xC9C0;&#xB4E4;&#xC740; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h2 id="jest-changed-files">jest-changed-files</h2>
+<p>git &#xC774;&#xB098; hg &#xC800;&#xC7A5;&#xC18C; &#xB0B4;&#xC5D0; &#xC218;&#xC815;&#xB41C; &#xD30C;&#xC77C;&#xB4E4;&#xC744; &#xD655;&#xC778;&#xD560; &#xC218; &#xC788;&#xB294; &#xD234;&#xC785;&#xB2C8;&#xB2E4;. &#xB2E4;&#xC74C; &#xB450; &#xD568;&#xC218;&#xB97C; export&#xD558;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<ul>
+<li><code>getChangedFilesForRoots</code> &#xB294; &#xBCC0;&#xACBD;&#xB41C; &#xD30C;&#xC77C;&#xACFC; &#xC800;&#xC7A5;&#xC18C;&#xC758; &#xC624;&#xBE0C;&#xC81D;&#xD2B8;&#xB97C; &#xB9AC;&#xD134;&#xD558;&#xB294; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li><code>findRepos</code>&#xB294; &#xD2B9;&#xC815; &#xACBD;&#xB85C; &#xB0B4;&#xC5D0; &#xD3EC;&#xD568;&#xB41C; &#xC800;&#xC7A5;&#xC18C;&#xB4E4;&#xC758; &#xC138;&#xD2B8;&#xB97C; &#xB9AC;&#xD134;&#xD558;&#xB294; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</li>
+</ul>
+<h2 id="&#xC608;&#xC2DC;">&#xC608;&#xC2DC;</h2>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { getChangedFilesForRoots } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;jest-changed-files&quot;</span>);
+
+<span class="hljs-comment">// &#xD604;&#xC7AC; &#xC800;&#xC7A5;&#xC18C;&#xC758; &#xCD5C;&#xC2E0; &#xCEE4;&#xBC0B; &#xC774;&#xD6C4; &#xBCC0;&#xACBD;&#xB41C; &#xD30C;&#xC77C;&#xB4E4;&#xC744; &#xCD9C;&#xB825;&#xD569;&#xB2C8;&#xB2E4;.</span>
+getChangedFilesForRoots([<span class="hljs-string">&quot;./&quot;</span>], {
+  lastCommit: <span class="hljs-literal">true</span>
+}).then(result =&gt; <span class="hljs-built_in">console</span>.log(result.changedFiles));
+</code></pre>
+<p><code>jest-changed-files</code>&#xC5D0; &#xB300;&#xD574; &#xB354; &#xC54C;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74; <a href="https://github.com/facebook/jest/blob/master/packages/jest-changed-files/README.md" target="_blank">readme &#xBB38;&#xC11C;</a>&#xB97C; &#xC77D;&#xC5B4;&#xC8FC;&#xC138;&#xC694;.</p>
+<h2 id="jest-diff">jest-diff</h2>
 
                                 
                                 </section>
@@ -282,7 +299,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Jest Platform","level":"1.2.6","depth":2,"previous":{"title":"Mock Functions","level":"1.2.5","depth":2,"path":"Introduction/4.MockFunctions.md","ref":"Introduction/4.MockFunctions.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/5.JestPlatform.md","mtime":"2018-11-27T15:45:58.022Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-27T15:47:30.117Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Jest Platform","level":"1.2.6","depth":2,"previous":{"title":"Mock Functions","level":"1.2.5","depth":2,"path":"Introduction/4.MockFunctions.md","ref":"Introduction/4.MockFunctions.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/5.JestPlatform.md","mtime":"2018-12-10T17:05:03.558Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-10T17:05:46.691Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
