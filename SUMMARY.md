@@ -8,3 +8,4 @@
   - [Setup and Teardown](Introduction/3.SetupAndTeardown.md)
   - [Mock Functions](Introduction/4.MockFunctions.md)
   - [Jest Platform](Introduction/5.JestPlatform.md)
+  - [Jest Community](Introduction/6.JestCommunity.md)
