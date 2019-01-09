@@ -1,0 +1,504 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Setup and Teardown · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="4.MockFunctions.html" />
+    
+    
+    <link rel="prev" href="2.TestingAsynchronousCode.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    들어가기에 앞서
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Introduction
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="0.GettingStarted.html">
+            
+                <a href="0.GettingStarted.html">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="1.UsingMatchers.html">
+            
+                <a href="1.UsingMatchers.html">
+            
+                    
+                    Using Matchers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="2.TestingAsynchronousCode.html">
+            
+                <a href="2.TestingAsynchronousCode.html">
+            
+                    
+                    Testing Asynchronous Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.4" data-path="3.SetupAndTeardown.html">
+            
+                <a href="3.SetupAndTeardown.html">
+            
+                    
+                    Setup and Teardown
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="4.MockFunctions.html">
+            
+                <a href="4.MockFunctions.html">
+            
+                    
+                    Mock Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="5.JestPlatform.html">
+            
+                <a href="5.JestPlatform.html">
+            
+                    
+                    Jest Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Setup and Teardown</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="setup-and-teardown">Setup and Teardown</h1>
+<blockquote>
+<p>&#xC0AC;&#xC804; &#xC791;&#xC5C5; &#xBC0F; &#xD6C4;&#xC18D; &#xC791;&#xC5C5; &#xC77C;&#xAD04;&#xCC98;&#xB9AC;&#xD558;&#xAE30;</p>
+</blockquote>
+<p>&#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xC2E4;&#xD589;&#xD558;&#xAE30; &#xC804;&#xC5D0; &#xC885;&#xC885; &#xC0AC;&#xC804; &#xC791;&#xC5C5;&#xC744; &#xD574;&#xC57C;&#xD560; &#xACBD;&#xC6B0;&#xAC00; &#xC885;&#xC885; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xC885;&#xB8CC;&#xB41C; &#xD6C4; &#xD6C4;&#xC18D; &#xC791;&#xC5C5;&#xC744; &#xD574;&#xC57C;&#xD560; &#xB54C;&#xB3C4; &#xC788;&#xC8E0;. Jest &#xB294; &#xC774;&#xB7EC;&#xD55C; &#xACBD;&#xC6B0;&#xB3C4; &#xC190;&#xC27D;&#xAC8C; &#xCC98;&#xB9AC;&#xD560; &#xC218; &#xC788;&#xB3C4;&#xB85D; &#xB2E4;&#xC74C;&#xC758; &#xAE30;&#xB2A5;&#xB4E4;&#xC744; &#xC81C;&#xACF5;&#xD574;&#xC90D;&#xB2C8;&#xB2E4;.</p>
+<h2 id="repeating-setup-for-many-tests">Repeating Setup For Many Tests</h2>
+<blockquote>
+<p>&#xBC18;&#xBCF5;&#xC801;&#xC778; &#xC0AC;&#xC804; &#xC791;&#xC5C5; &#xC218;&#xD589;</p>
+</blockquote>
+<p>&#xB9CC;&#xC57D; &#xC5EC;&#xB7EC; &#xD14C;&#xC2A4;&#xD2B8; &#xCF54;&#xB4DC;&#xC5D0; &#xB300;&#xD574; &#xBC18;&#xBCF5;&#xC801;&#xC73C;&#xB85C; &#xD574;&#xC57C;&#xD558;&#xB294; &#xC911;&#xBCF5;&#xB41C; &#xC791;&#xC5C5;&#xB4E4;&#xC774; &#xC788;&#xB2E4;&#xBA74;, <code>beforeEach</code>&#xC640; <code>afterEach</code>&#xB97C; &#xC4F8; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC608;&#xB97C; &#xB4E4;&#xC5B4;, &#xC5EC;&#xB7EC; &#xAC1C;&#xC758; &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xB3C4;&#xC2DC;&#xC5D0; &#xB300;&#xD55C; &#xC815;&#xBCF4;&#xB97C; &#xB2F4;&#xC740; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xB97C; &#xB2E4;&#xB8EC;&#xB2E4;&#xACE0; &#xD574;&#xBD05;&#xC2DC;&#xB2E4;. &#xC774; &#xB370;&#xC774;&#xD130;&#xB4E4;&#xC744; &#xB2E4;&#xB8E8;&#xAE30; &#xC704;&#xD574;, &#xAC01;&#xAC01;&#xC758; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xC2E4;&#xD589;&#xD558;&#xAE30; &#xC804;&#xC5D0;&#xB294; &#xC0AC;&#xC804;&#xC791;&#xC5C5;&#xC73C;&#xB85C; <code>initializeCityDatabase()</code>&#xC744; &#xD638;&#xCD9C;&#xD574;&#xC57C; &#xD558;&#xACE0;, &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xB05D;&#xB09C; &#xD6C4;&#xC5D0;&#xB294; &#xD6C4;&#xC18D; &#xC791;&#xC5C5;&#xC73C;&#xB85C; <code>clearCityDatabase()</code>&#xB97C; &#xD638;&#xCD9C;&#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;. &#xC774;&#xB7F0; &#xACBD;&#xC6B0;&#xC5D4; &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xCF54;&#xB4DC;&#xB97C; &#xC9E4; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">beforeEach(() =&gt; {
+  initializeCityDatabase();
+});
+
+afterEach(() =&gt; {
+  clearCityDatabase();
+});
+
+test(<span class="hljs-string">&quot;&#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xC5D0;&#xB294; Vienna&#xAC00; &#xD3EC;&#xD568;&#xB418;&#xC5B4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;&quot;</span>, () =&gt; {
+  expect(isCity(<span class="hljs-string">&quot;Vienna&quot;</span>)).toBeTruthy();
+});
+
+test(<span class="hljs-string">&quot;&#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xC5D0;&#xB294; San Juan&#xC774; &#xD3EC;&#xD568;&#xB418;&#xC5B4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;&quot;</span>, () =&gt; {
+  expect(isCity(<span class="hljs-string">&quot;San Juan&quot;</span>)).toBeTruthy();
+});
+</code></pre>
+<p><code>beforeEach</code>&#xC640; <code>afterEach</code>&#xB294; [&#xBE44;&#xB3D9;&#xAE30; &#xCF54;&#xB4DC;&#xB97C; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xB294; &#xBC29;&#xBC95;]&#xC5D0;&#xC11C; &#xB17C;&#xD588;&#xB358; &#xAC83;&#xACFC; &#xB3D9;&#xC77C;&#xD55C; &#xBC29;&#xC2DD;&#xC73C;&#xB85C; &#xBE44;&#xB3D9;&#xAE30; &#xCF54;&#xB4DC;&#xB97C; &#xB2E4;&#xB8F0; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. <code>done</code> &#xD30C;&#xB77C;&#xBBF8;&#xD130;&#xB97C; &#xBC1B;&#xAC70;&#xB098; Promise &#xB97C; &#xB9AC;&#xD134;&#xD558;&#xB294; &#xAC83;&#xC774;&#xC8E0;. &#xC608;&#xB97C; &#xB4E4;&#xC5B4;, &#xB370;&#xC774;&#xD130; &#xCD08;&#xAE30;&#xD654; &#xC2DC;&#xC5D0; resolve &#xB418;&#xB294; Promise &#xB97C; <code>initializeCityDatabase()</code>&#xAC00; &#xB9AC;&#xD134;&#xD558;&#xB294; &#xC0C1;&#xD669;&#xC774;&#xB77C;&#xBA74;, &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xD574;&#xB2F9; Promise &#xB97C; &#xB9AC;&#xD134;&#xD574;&#xC8FC;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">beforeEach(() =&gt; {
+  <span class="hljs-keyword">return</span> initializeCityDatabase();
+});
+</code></pre>
+<h2 id="one-time-setup">One-Time Setup</h2>
+<p>&#xC885;&#xC885; &#xC0AC;&#xC804; &#xC791;&#xC5C5;&#xC744; &#xD30C;&#xC77C;&#xC758; &#xC2DC;&#xC791; &#xBD80;&#xBD84;&#xC5D0;&#xC11C; &#xD55C;&#xBC88;&#xB9CC; &#xC2E4;&#xD589;&#xD558;&#xACE0; &#xC2F6;&#xC744; &#xB54C;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC0AC;&#xC804; &#xC791;&#xC5C5;&#xC774; &#xBE44;&#xB3D9;&#xAE30;&#xC801;&#xC73C;&#xB85C; &#xC791;&#xB3D9;&#xD558;&#xB294; &#xCF54;&#xB4DC;&#xB77C;&#xBA74;, &#xAF64; &#xADC0;&#xCC2E;&#xC544;&#xC9C8; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xC774;&#xB7F0; &#xC0C1;&#xD669;&#xC77C; &#xB550; Jest &#xC758; <code>beforeAll</code>&#xACFC; <code>afterAll</code>&#xC744; &#xD65C;&#xC6A9;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC608;&#xB97C; &#xB4E4;&#xC5B4;, <code>initializeCityDatabase</code>&#xC640; <code>clearCityDatabase</code>&#xAC00; &#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130; &#xBCA0;&#xC774;&#xC2A4; &#xAD00;&#xB828; Promise&#xB97C; &#xBC18;&#xD658;&#xD55C;&#xB2E4;&#xACE0; &#xAC00;&#xC815;&#xD569;&#xC2DC;&#xB2E4;. &#xC774; &#xB370;&#xC774;&#xD130;&#xB294; &#xD14C;&#xC2A4;&#xD2B8;&#xB9C8;&#xB2E4; &#xC7AC;&#xC0AC;&#xC6A9;&#xB420; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACBD;&#xC6B0;&#xC5D4; &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xD14C;&#xC2A4;&#xD2B8; &#xCF54;&#xB4DC;&#xB97C; &#xC9E4; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">beforeAll(() =&gt; {
+  <span class="hljs-keyword">return</span> initializeCityDatabase();
+});
+
+afterAll(() =&gt; {
+  <span class="hljs-keyword">return</span> clearCityDatabase();
+});
+
+test(<span class="hljs-string">&quot;&#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xC5D4; Vienna&#xAC00; &#xD3EC;&#xD568;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&quot;</span>, () =&gt; {
+  expect(isCity(<span class="hljs-string">&quot;Vienna&quot;</span>)).toBeTruthy();
+});
+
+test(<span class="hljs-string">&quot;&#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xC5D4; San Juan&#xC774; &#xD3EC;&#xD568;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&quot;</span>, () =&gt; {
+  expect(isCity(<span class="hljs-string">&quot;San Juan&quot;</span>)).toBeTruthy();
+});
+</code></pre>
+<h2 id="scoping">Scoping</h2>
+<blockquote>
+<p>&#xBC94;&#xC704; &#xC81C;&#xD55C;</p>
+</blockquote>
+<p>&#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C;, <code>before</code>&#xC640; <code>after</code> &#xC740; &#xD55C; &#xD30C;&#xC77C; &#xB0B4;&#xC758; &#xBAA8;&#xB4E0; &#xD14C;&#xC2A4;&#xD2B8;&#xC5D0; &#xC801;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;. <code>describe</code> &#xC744; &#xC774;&#xC6A9;&#xD558;&#xBA74; &#xC77C;&#xBD80; &#xD14C;&#xC2A4;&#xD2B8;&#xB4E4;&#xC744; &#xADF8;&#xB8F9;&#xC9C0;&#xC744; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. <code>before</code>&#xC640; <code>after</code> &#xC774; <code>describe</code> &#xBE14;&#xB85D; &#xC548;&#xC5D0; &#xC788;&#xC744; &#xACBD;&#xC6B0;, &#xC774;&#xB4E4;&#xC740; &#xAC19;&#xC740; <code>describe</code> &#xBE14;&#xB85D; &#xB0B4;&#xC758; &#xD14C;&#xC2A4;&#xD2B8;&#xC5D0;&#xB9CC; &#xC801;&#xC6A9;&#xB420; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC608;&#xB97C; &#xB4E4;&#xC5B4;, &#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4; &#xBFD0;&#xB9CC; &#xC544;&#xB2C8;&#xB77C; &#xC74C;&#xC2DD; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4; &#xB610;&#xD55C; &#xD14C;&#xC2A4;&#xD2B8;&#xD574;&#xC57C; &#xD55C;&#xB2E4;&#xACE0; &#xAC00;&#xC815;&#xD569;&#xC2DC;&#xB2E4;. &#xC11C;&#xB85C; &#xB2E4;&#xB978; &#xAC83;&#xC744; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xAE30; &#xB54C;&#xBB38;&#xC5D0;, &#xAC01;&#xAC01;&#xC5D0; &#xB300;&#xD55C; &#xD14C;&#xC2A4;&#xD2B8; &#xD658;&#xACBD; &#xC791;&#xC5C5;&#xB3C4; &#xB2E4;&#xB974;&#xAC8C; &#xC218;&#xD589;&#xD574;&#xC57C; &#xD558;&#xB294; &#xC0C1;&#xD669;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx"><span class="hljs-comment">// &#xC774; &#xD30C;&#xC77C; &#xB0B4;&#xC758; &#xBAA8;&#xB4E0; &#xD14C;&#xC2A4;&#xD2B8;&#xC5D0; &#xC801;&#xC6A9;</span>
+beforeEach(() =? {
+  <span class="hljs-keyword">return</span> initializeCityDatabase();
+});
+
+test(<span class="hljs-string">&apos;&#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xC5D4; Vienna&#xAC00; &#xD3EC;&#xD568;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&apos;</span>, () =&gt; {
+  expect(isCity(<span class="hljs-string">&apos;Vienna&apos;</span>).toBeTruthy();
+});
+
+test(<span class="hljs-string">&apos;&#xB3C4;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xC5D4; San Juan&#xC774; &#xD3EC;&#xD568;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&apos;</span>, () =&gt; {
+  expect(isCity(<span class="hljs-string">&apos;San Juan&apos;</span>)).toBeTruthy();
+});
+
+describe(<span class="hljs-string">&apos;&#xB3C4;&#xC2DC;&#xB97C; &#xC74C;&#xC2DD;&#xC5D0; &#xB9E4;&#xCE6D;&#xC2DC;&#xD0A8;&#xB2E4;&apos;</span>, () =&gt; {
+  <span class="hljs-comment">// &#xC774; describe &#xBE14;&#xB85D; &#xB0B4;&#xBD80;&#xC5D0;&#xB9CC; &#xC801;&#xC6A9;</span>
+  beforeEach(()=&gt; {
+    <span class="hljs-keyword">return</span> initialFoodDatabase();
+  });
+
+  test(<span class="hljs-string">&apos;Vienna&#xB294; &#xC18C;&#xC138;&#xC9C0;&#xC758; &#xB3C4;&#xC2DC;&#xC774;&#xB2E4;&apos;</span>, () =&gt; {
+    expect(isValidCityFoodPair(<span class="hljs-string">&apos;Vienna&apos;</span>, <span class="hljs-string">&apos;Frank Sausage&apos;</span>)).toBe(<span class="hljs-literal">true</span>);
+  });
+
+  test(<span class="hljs-string">&apos;San Juan&#xC740; &#xCC44;&#xC18C;&#xC758; &#xB3C4;&#xC2DC;&#xC774;&#xB2E4;&apos;</span>, () =&gt; {
+    expect(isValidCityFoodPair(<span class="hljs-string">&apos;San Juan&apos;</span>, <span class="hljs-string">&apos;Carrot&apos;</span>)).toBe(<span class="hljs-literal">true</span>);
+  });
+})
+</code></pre>
+<p>&#xCD5C;&#xC0C1;&#xB2E8;&#xC5D0; &#xC704;&#xCE58;&#xD55C; <code>beforeEach</code>&#xC740; <code>describe</code> &#xBE14;&#xB85D; &#xB0B4;&#xC5D0; &#xC815;&#xC758;&#xB41C; <code>beforeEach</code>&#xBCF4;&#xB2E4; &#xBA3C;&#xC800; &#xC2E4;&#xD589;&#xB41C;&#xB2E4;&#xB294; &#xAC83;&#xC744; &#xAE30;&#xC5B5;&#xD558;&#xC138;&#xC694;. &#xC774;&#xB97C; &#xC720;&#xB150;&#xD574;&#xB454;&#xB2E4;&#xBA74; &#xBAA8;&#xB4E0; &#xD6C5;&#xC744; &#xC62C;&#xBC14;&#xB978; &#xC21C;&#xC11C;&#xB85C; &#xC2E4;&#xD589;&#xD558;&#xB294; &#xB370;&#xC5D0; &#xB3C4;&#xC6C0;&#xC744; &#xC904; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">beforeAll(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Scoped beforeAll&quot;</span>));
+afterAll(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Scoped afterAll&quot;</span>));
+beforeEach(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Scoped beforeEach&quot;</span>));
+afterEach(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Scoped afterEach&quot;</span>));
+test(<span class="hljs-string">&quot;&quot;</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Scoped test&quot;</span>));
+
+describe(<span class="hljs-string">&quot;Scoped / Nested block&quot;</span>, () =&gt; {
+  beforeAll(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Nested beforeAll&quot;</span>));
+  afterAll(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Nested afterAll&quot;</span>));
+  beforeEach(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Nested beforeEach&quot;</span>));
+  afterEach(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Nested afterEach&quot;</span>));
+  test(<span class="hljs-string">&quot;&quot;</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Nested test&quot;</span>));
+});
+
+<span class="hljs-comment">// &#xCF58;&#xC194;&#xCD9C;&#xB825; &#xACB0;&#xACFC;&#xBB3C;</span>
+
+<span class="hljs-comment">// Scoped beforeAll</span>
+<span class="hljs-comment">// Scoped beforeEach</span>
+
+<span class="hljs-comment">// Scoped test</span>
+
+<span class="hljs-comment">// Scoped afterEach</span>
+
+<span class="hljs-comment">// Nested beforeAll</span>
+<span class="hljs-comment">// Scoped beforeEach</span>
+<span class="hljs-comment">// Nested beforeEach</span>
+
+<span class="hljs-comment">// Nested test</span>
+
+<span class="hljs-comment">// Nested afterEach</span>
+<span class="hljs-comment">// Scoped afterEach</span>
+<span class="hljs-comment">// Nested afterAll</span>
+<span class="hljs-comment">// Scoped afterAll</span>
+</code></pre>
+<h2 id="order-of-execution-of-describe-and-test-blocks">Order of execution of describe and test blocks</h2>
+<blockquote>
+<p><code>describe</code>&#xC640; <code>test</code>&#xC758; &#xC2E4;&#xD589; &#xC21C;&#xC11C;</p>
+</blockquote>
+<p>Jest&#xB294; <code>test</code>&#xC774; &#xC2E4;&#xC81C;&#xB85C; &#xC2E4;&#xD589;&#xB418;&#xAE30; <em>&#xC804;&#xC5D0;</em> &#xBAA8;&#xB4E0; <code>describe</code>&#xC758; &#xD578;&#xB4E4;&#xB7EC;&#xB97C; &#xC2E4;&#xD589;&#xD569;&#xB2C8;&#xB2E4;. &#xC774;&#xB294; &#xC0AC;&#xC804;&#xC791;&#xC5C5; &#xBC0F; &#xD6C4;&#xC18D;&#xC791;&#xC5C5;&#xC744; <code>before*</code> &#xBC0F; <code>after*</code> &#xD578;&#xB4E4;&#xB7EC;&#xC5D0;&#xC11C; &#xBCC4;&#xB3C4;&#xB85C; &#xCC98;&#xB9AC;&#xD558;&#xB294; &#xB610; &#xB2E4;&#xB978; &#xC774;&#xC720;&#xC774;&#xAE30;&#xB3C4; &#xD569;&#xB2C8;&#xB2E4;. &#xD55C;&#xBC88; <code>describe</code> &#xB0B4;&#xBD80;&#xB97C; &#xD6D1;&#xACE0; &#xC9C0;&#xB098;&#xAC00;&#xBA74;, Jest&#xB294; &#xC21C;&#xC11C;&#xB300;&#xB85C; <code>test</code>&#xC744; &#xC2E4;&#xD589;&#xC2DC;&#xD0B5;&#xB2C8;&#xB2E4;. <code>test</code>&#xB294; &#xC120;&#xD589; <code>test</code>&#xAC00; &#xAE54;&#xB054;&#xD558;&#xAC8C; &#xC815;&#xB9AC;&#xB418;&#xACE0; &#xC644;&#xB8CC;&#xB420; &#xB54C;&#xAE4C;&#xC9C0; &#xCC28;&#xB840;&#xB97C; &#xAE30;&#xB2E4;&#xB9BD;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB2E4;&#xC74C;&#xC740; &#xC124;&#xBA85;&#xC744; &#xC704;&#xD55C; &#xD14C;&#xC2A4;&#xD2B8; &#xCF54;&#xB4DC;&#xC640; &#xCD9C;&#xB825; &#xACB0;&#xACFC;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">describe(<span class="hljs-string">&quot;outer&quot;</span>, () =&gt; {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;describe outer-a&quot;</span>);
+
+  describe(<span class="hljs-string">&quot;describe inner 1&quot;</span>, () =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;describe inner 1&quot;</span>);
+    test(<span class="hljs-string">&quot;test 1&quot;</span>, () =&gt; {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;test for describe inner 1&quot;</span>);
+      expect(<span class="hljs-literal">true</span>).toEqual(<span class="hljs-literal">true</span>);
+    });
+  });
+
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;describe outer-b&quot;</span>);
+
+  test(<span class="hljs-string">&quot;test 1&quot;</span>, () =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;test for describe outer&quot;</span>);
+    expect(<span class="hljs-literal">true</span>).toEqual(<span class="hljs-literal">true</span>);
+  });
+
+  describe(<span class="hljs-string">&quot;describe inner 2&quot;</span>, () =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;describe inner 2&quot;</span>);
+    test(<span class="hljs-string">&quot;test for describe inner 2&quot;</span>, () =&gt; {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;test for describe inner 2&quot;</span>);
+      expect(<span class="hljs-literal">false</span>).toEqual(<span class="hljs-literal">false</span>);
+    });
+  });
+
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;describe outer-c&quot;</span>);
+});
+
+<span class="hljs-comment">// describe outer-a</span>
+<span class="hljs-comment">// describe inner 1</span>
+<span class="hljs-comment">// describe outer-b</span>
+<span class="hljs-comment">// describe inner 2</span>
+<span class="hljs-comment">// describe outer-c</span>
+<span class="hljs-comment">// test for describe inner 1</span>
+<span class="hljs-comment">// test for describe outer</span>
+<span class="hljs-comment">// test for describe inner 2</span>
+</code></pre>
+<h2 id="general-advice">General Advice</h2>
+<blockquote>
+<p>&#xC77C;&#xBC18;&#xC801;&#xC778; &#xC870;&#xC5B8;</p>
+</blockquote>
+<p>&#xB9CC;&#xC57D; &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xC2E4;&#xD328;&#xD55C;&#xB2E4;&#xBA74;, &#xAC00;&#xC7A5; &#xBA3C;&#xC800; &#xCCB4;&#xD06C;&#xD574;&#xC57C;&#xD560; &#xAC83; &#xC911;&#xC758; &#xD558;&#xB098;&#xAC00; &#xBC14;&#xB85C; &#xD574;&#xB2F9; &#xD14C;&#xC2A4;&#xD2B8;&#xB9CC;&#xC774; &#xC720;&#xC77C;&#xD558;&#xAC8C; &#xC2E4;&#xD589;&#xB418;&#xB294; &#xACBD;&#xC6B0;&#xC5D0;&#xB3C4; &#xB611;&#xAC19;&#xC774; &#xC2E4;&#xD328;&#xD558;&#xB294;&#xC9C0;&#xC5D0; &#xB300;&#xD55C; &#xC720;&#xBB34;&#xC785;&#xB2C8;&#xB2E4;. Jest&#xC5D0;&#xC11C; &#xB2E8; &#xD558;&#xB098;&#xC758; <code>test</code>&#xB97C; &#xC2E4;&#xD589;&#xC2DC;&#xD0A4;&#xB294; &#xAC83;&#xC740; &#xB2E8;&#xC21C;&#xD569;&#xB2C8;&#xB2E4;. <code>test</code>&#xB97C; <code>test.only</code>&#xB85C; &#xC7A0;&#xAE50; &#xBC14;&#xAFD4;&#xBCF4;&#xAE30;&#xB9CC; &#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">test.only(<span class="hljs-string">&quot;&#xC2E4;&#xD589;&#xB418;&#xB294; &#xC720;&#xC77C;&#xD55C; &#xD14C;&#xC2A4;&#xD2B8;&#xC785;&#xB2C8;&#xB2E4;&quot;</span>, () =&gt; {
+  expect(<span class="hljs-literal">true</span>).toBe(<span class="hljs-literal">true</span>);
+});
+
+test(<span class="hljs-string">&quot;&#xC774; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xC2E4;&#xD589;&#xB418;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;&quot;</span>, () =&gt; {
+  expect(<span class="hljs-string">&quot;A&quot;</span>).toBe(<span class="hljs-string">&quot;A&quot;</span>);
+});
+</code></pre>
+<p>&#xD558;&#xB098;&#xC758; &#xD070; Test Suite &#xB0B4;&#xC5D0;&#xC11C; &#xD2B9;&#xC815; &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xC2E4;&#xD328;&#xD55C;&#xB2E4;&#xBA74;, &#xD574;&#xB2F9; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xB2E8;&#xB3C5;&#xC73C;&#xB85C; &#xC2E4;&#xD589;&#xC2DC;&#xCF1C; &#xBD05;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; &#xB2E8;&#xB3C5; &#xC2E4;&#xD589;&#xC2DC;&#xC5D0; &#xD574;&#xB2F9; &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xC131;&#xACF5;&#xD55C;&#xB2E4;&#xBA74;, &#xB3D9;&#xC77C; Test Suite &#xB0B4;&#xC758; &#xB2E4;&#xB978; &#xD14C;&#xC2A4;&#xD2B8;&#xAC00; &#xC774; &#xD14C;&#xC2A4;&#xD2B8;&#xC5D0; &#xAC04;&#xC12D;&#xD574; &#xC2E4;&#xD328;&#xB97C; &#xC77C;&#xC73C;&#xD0A4;&#xACE0; &#xC788;&#xC744; &#xD655;&#xB960;&#xC774; &#xB192;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774;&#xB7EC;&#xD55C; &#xBB38;&#xC81C;&#xB294; &#xAC01; &#xD14C;&#xC2A4;&#xD2B8;&#xB4E4;&#xC758; &#xACF5;&#xC720; state&#xB97C; <code>beforeEach</code>&#xB85C; &#xAE54;&#xB054;&#xD788; &#xC815;&#xB9AC;&#xD588;&#xC744; &#xB54C;&#xB3C4; &#xC885;&#xC885; &#xD574;&#xACB0;&#xB418;&#xACE4; &#xD569;&#xB2C8;&#xB2E4;. &#xC77C;&#xBD80; &#xACF5;&#xC720; state&#xAC00; &#xC758;&#xB3C4;&#xCE58;&#xC54A;&#xAC8C; &#xC218;&#xC815;&#xB418;&#xC5C8;&#xB294;&#xC9C0; &#xD655;&#xC778;&#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, <code>beforeEach</code>&#xB97C; &#xD65C;&#xC6A9;&#xD558;&#xC5EC; &#xB2E8;&#xC21C;&#xD788; &#xB370;&#xC774;&#xD130; &#xB85C;&#xADF8;&#xB9CC; &#xCC0D;&#xC5B4;&#xBCF4;&#xB294; &#xAC83;&#xB3C4; &#xC88B;&#xC740; &#xBC29;&#xBC95;&#xC785;&#xB2C8;&#xB2E4;.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="2.TestingAsynchronousCode.html" class="navigation navigation-prev " aria-label="Previous page: Testing Asynchronous Code">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="4.MockFunctions.html" class="navigation navigation-next " aria-label="Next page: Mock Functions">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"next":{"title":"Mock Functions","level":"1.2.5","depth":2,"path":"Introduction/4.MockFunctions.md","ref":"Introduction/4.MockFunctions.md","articles":[]},"previous":{"title":"Testing Asynchronous Code","level":"1.2.3","depth":2,"path":"Introduction/2.TestingAsynchronousCode.md","ref":"Introduction/2.TestingAsynchronousCode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/3.SetupAndTeardown.md","mtime":"2019-01-09T15:17:59.335Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-09T15:20:14.294Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
