@@ -1,0 +1,372 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Testing Asynchronous Code · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="UsingMatchers.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    들어가기에 앞서
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Introduction
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="GettingStarted.html">
+            
+                <a href="GettingStarted.html">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="UsingMatchers.html">
+            
+                <a href="UsingMatchers.html">
+            
+                    
+                    Using Matchers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="TestingAsynchronousCode.html">
+            
+                <a href="TestingAsynchronousCode.html">
+            
+                    
+                    Testing Asynchronous Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Testing Asynchronous Code</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="testing-asynchronous-code">Testing Asynchronous Code</h1>
+<blockquote>
+<p>&#xBE44;&#xB3D9;&#xAE30; &#xCF54;&#xB4DC;&#xB97C; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xB294; &#xBC29;&#xBC95;</p>
+</blockquote>
+<p>&#xBE44;&#xB3D9;&#xAE30; &#xCF54;&#xB4DC;&#xB294; &#xC790;&#xBC14;&#xC2A4;&#xD06C;&#xB9BD;&#xD2B8;&#xC5D0;&#xC11C; &#xD754;&#xD558;&#xAC8C; &#xBCFC; &#xC218; &#xC788;&#xB294; &#xCF54;&#xB4DC;&#xC785;&#xB2C8;&#xB2E4;. &#xBE44;&#xB3D9;&#xAE30;&#xC801;&#xC73C;&#xB85C; &#xB3D9;&#xC791;&#xD558;&#xB294; &#xCF54;&#xB4DC;&#xB97C; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xAE30; &#xC704;&#xD574;&#xC11C;, Jest &#xB294; &#xADF8; &#xCF54;&#xB4DC;&#xAC00; &#xC5B8;&#xC81C; &#xB3D9;&#xC791;&#xC744; &#xC644;&#xB8CC;&#xD558;&#xB294;&#xC9C0; &#xC54C;&#xC544;&#xC57C;&#xB9CC; &#xB2E4;&#xC74C; &#xD14C;&#xC2A4;&#xD2B8;&#xB85C; &#xB118;&#xC5B4;&#xAC00;&#xB294; &#xC6B0;&#xB97C; &#xBC94;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. Jest &#xB294; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC740; &#xBC29;&#xBC95;&#xC73C;&#xB85C; &#xBE44;&#xB3D9;&#xAE30; &#xCF54;&#xB4DC;&#xB97C; &#xD14C;&#xC2A4;&#xD2B8;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h2 id="callbacks">Callbacks</h2>
+<p>&#xCF5C;&#xBC31; &#xD568;&#xC218;&#xB294; &#xAC00;&#xC7A5; &#xD754;&#xD558;&#xAC8C; &#xBCFC; &#xC218; &#xC788;&#xB294; &#xBE44;&#xB3D9;&#xAE30; &#xD328;&#xD134;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p><code>fetchData(callback)</code>&#xB77C;&#xB294; &#xD568;&#xC218;&#xB97C; &#xC608;&#xC2DC;&#xB85C; &#xB4E4;&#xC5B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xD568;&#xC218;&#xB294; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC694;&#xCCAD;&#xD55C; &#xD6C4; &#xB370;&#xC774;&#xD130;&#xAC00; &#xB3C4;&#xCC29;&#xD558;&#xBA74; <code>callback(data)</code>&#xB97C; &#xD638;&#xCD9C;&#xD569;&#xB2C8;&#xB2E4;. &#xC5EC;&#xAE30;&#xC11C; &#xBC18;&#xD658;&#xB41C; &#xB370;&#xC774;&#xD130; &#xAC12;&#xC774; &#xBB38;&#xC790;&#xC5F4; <code>&apos;peanut butter&apos;</code>&#xC784;&#xC744; &#xD14C;&#xC2A4;&#xD2B8;&#xD574;&#xC57C; &#xD558;&#xB294; &#xC0C1;&#xD669;&#xC774;&#xB77C;&#xACE0; &#xAC00;&#xC815;&#xD574;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C;, Jest &#xB294; &#xB9C8;&#xC9C0;&#xB9C9; &#xCF54;&#xB4DC;&#xAE4C;&#xC9C0; &#xC2E4;&#xD589;&#xB418;&#xBA74; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xB05D;&#xB9C8;&#xCE69;&#xB2C8;&#xB2E4;. &#xB2E4;&#xC2DC; &#xB9D0;&#xD574; &#xB2E4;&#xC74C; &#xCF54;&#xB4DC;&#xB85C; &#xC791;&#xC131;&#xB41C; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xC758;&#xB3C4;&#xD55C; &#xB300;&#xB85C; &#xC791;&#xB3D9;&#xD558;&#xC9C0; <em>&#xC54A;&#xC744;</em> &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx"><span class="hljs-comment">// &#xC774;&#xB807;&#xAC8C; &#xD558;&#xC9C0; &#xB9C8;&#xC138;&#xC694;!</span>
+test(<span class="hljs-string">&quot;data&#xC758; &#xAC12;&#xC740; peanut butter&#xC774;&#xB2E4;&quot;</span>, () =&gt; {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">data</span>) </span>{
+    expect(data).toBe(<span class="hljs-string">&quot;peanut butter&quot;</span>);
+  }
+
+  fetchData(callback);
+});
+</code></pre>
+<p><code>fetchData</code>&#xAC00; &#xC2E4;&#xD589;&#xB418;&#xB294; &#xC21C;&#xAC04;, &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xCF5C;&#xBC31; &#xD568;&#xC218;&#xAC00; &#xBBF8;&#xCC98; &#xD638;&#xCD9C;&#xB418;&#xC9C0; &#xBABB;&#xD55C; &#xCC44;&#xB85C; &#xC885;&#xB8CC;&#xB418;&#xC5B4;&#xBC84;&#xB9BD;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC774;&#xB97C; &#xBC14;&#xB85C;&#xC7A1;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, <code>test</code>&#xC758; &#xBC29;&#xC2DD;&#xC744; &#xC870;&#xAE08; &#xBC14;&#xAFB8;&#xC5B4;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;. &#xAE30;&#xC874; &#xCF54;&#xB4DC;&#xCC98;&#xB7FC; &#xBE48; &#xC778;&#xC218;&#xB97C; &#xB123;&#xB294; &#xB300;&#xC2E0;, <code>done</code>&#xC774;&#xB77C;&#xB294; &#xC778;&#xC218;&#xB97C; &#xB123;&#xC73C;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;. &#xADF8;&#xB7EC;&#xBA74; Jest &#xB294; <code>done</code>&#xC774; &#xD638;&#xCD9C;&#xB420; &#xB54C;&#xAE4C;&#xC9C0; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xC885;&#xB8CC;&#xD558;&#xC9C0; &#xC54A;&#xACE0; &#xAE30;&#xB2E4;&#xB9B4; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;data&#xC758; &#xAC12;&#xC740; peanut butter&#xC774;&#xB2E4;&quot;</span>, done =&gt; {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">data</span>) </span>{
+    expect(data).toBe(<span class="hljs-string">&quot;peanut butter&quot;</span>);
+    done();
+  }
+
+  fetchData(callback);
+});
+</code></pre>
+<p>&#xB9CC;&#xC57D; <code>done</code>&#xC774; &#xC2E4;&#xD589;&#xB418;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xC2E4;&#xD328;&#xD560; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xC815;&#xD655;&#xD788; &#xC758;&#xB3C4;&#xD55C; &#xB300;&#xB85C;&#xC8E0;.</p>
+<h2 id="promises">Promises</h2>
+<p>&#xB9CC;&#xC57D; Promise &#xB97C; &#xC0AC;&#xC6A9; &#xC911;&#xC774;&#xB77C;&#xBA74;, &#xBE44;&#xB3D9;&#xAE30; &#xCF54;&#xB4DC;&#xB97C; &#xB354; &#xC27D;&#xAC8C; &#xD14C;&#xC2A4;&#xD2B8;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. Jest &#xB85C; &#xD558;&#xC5EC;&#xAE08; &#xD14C;&#xC2A4;&#xD2B8;&#xB85C;&#xBD80;&#xD130; Promise &#xB97C; &#xB9AC;&#xD134;&#xD558;&#xAC8C; &#xD558;&#xBA74;, Jest &#xB294; &#xD574;&#xB2F9; Promise &#xAC00; resolve &#xB420; &#xB54C;&#xAE4C;&#xC9C0; &#xAE30;&#xB2E4;&#xB9BD;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; Promise &#xAC00; reject &#xB418;&#xBA74;, &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xC2E4;&#xD328;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p><code>fetchData</code>&#xB77C;&#xB294; &#xD568;&#xC218;&#xB97C; &#xB2E4;&#xC2DC; &#xC608;&#xC2DC;&#xB85C; &#xB4E4;&#xC5B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774;&#xC804;&#xACFC; &#xB2EC;&#xB9AC; &#xC774; &#xD568;&#xC218;&#xB294; callback &#xC744; &#xC4F0;&#xC9C0; &#xC54A;&#xACE0;, &#xBB38;&#xC790;&#xC5F4; <code>&apos;peanut butter&apos;</code>&#xB85C; resolve &#xB418;&#xB294; Promise &#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xC774;&#xB7F0; &#xACBD;&#xC6B0;&#xC5D4; &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;data&#xC758; &#xAC12;&#xC740; peanut butter&#xC774;&#xB2E4;&quot;</span>, () =&gt; {
+  expect.assertions(<span class="hljs-number">1</span>);
+  <span class="hljs-keyword">return</span> fetchData().then(data =&gt; {
+    expect(data).toBe(<span class="hljs-string">&quot;peanut butter&quot;</span>);
+  });
+});
+</code></pre>
+<p>Promise &#xB97C; &#xBC18;&#xD658;&#xD558;&#xB294; &#xAC83;&#xC744; &#xC78A;&#xC9C0; &#xB9C8;&#xC138;&#xC694;. &#xB9CC;&#xC77C; &#xC774; <code>return</code> &#xCF54;&#xB4DC;&#xB97C; &#xBE60;&#xB728;&#xB9B0;&#xB2E4;&#xBA74;, &#xD14C;&#xC2A4;&#xD2B8;&#xB294; <code>fetchData</code>&#xC758; &#xB3D9;&#xC791;&#xC774; &#xC644;&#xB8CC;&#xB418;&#xAE30;&#xB3C4; &#xC804;&#xC5D0; &#xC885;&#xB8CC;&#xB420; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB9CC;&#xC57D; Promise &#xAC00; reject &#xB418;&#xB294; &#xACBD;&#xC6B0;&#xB97C; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, <code>.catch</code> &#xBA54;&#xC18C;&#xB4DC;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;. <code>expect.assertions</code>&#xB97C; &#xCD94;&#xAC00;&#xD558;&#xB294; &#xAC83;&#xC744; &#xC78A;&#xC9C0; &#xB9C8;&#xC138;&#xC694;. &#xC774; &#xD568;&#xC218;&#xB294; assertion(<em>&#xBC88;&#xC5ED;&#xC790;: &#xB2E8;&#xC5B8;&#xC774;&#xB77C;&#xB294; &#xB73B;, &#xC989; &#xD14C;&#xC2A4;&#xD2B8;&#xB85C; <code>~&#xC77C; &#xAC83;&#xC774;&#xB2E4;</code>&#xB77C;&#xACE0; &#xC120;&#xC5B8;&#xD55C; &#xBD80;&#xBD84;&#xC744; &#xC77C;&#xCEEB;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC27D;&#xAC8C;&#xB294; <code>expect</code> &#xAD6C;&#xBB38;&#xC774;&#xB77C;&#xACE0; &#xBCF4;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</em>)&#xC774; &#xC815;&#xD655;&#xD788; &#xBA87; &#xBC88; &#xC2E4;&#xD589;&#xB418;&#xC5C8;&#xB294;&#xC9C0;&#xB97C; &#xD14C;&#xC2A4;&#xD2B8;&#xD569;&#xB2C8;&#xB2E4;. &#xC774;&#xB97C; &#xCD94;&#xAC00;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xACBD;&#xC6B0;, &#xB9CC;&#xC57D; Promise &#xAC00; resolve &#xB418;&#xC5B4;&#xBC84;&#xB9AC;&#xBA74; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xADF8;&#xB300;&#xB85C; &#xD1B5;&#xACFC;&#xB418;&#xC5B4;&#xBC84;&#xB9B4; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;error&#xAC00; &#xB098;&#xBA74;&#xC11C; &#xB370;&#xC774;&#xD130; fetch&#xC5D0; &#xC2E4;&#xD328;&#xD55C;&#xB2E4;&quot;</span>, () =&gt; {
+  expect.assertions(<span class="hljs-number">1</span>);
+  <span class="hljs-keyword">return</span> fetchData().catch(e =&gt; expect(e).toMatch(<span class="hljs-string">&quot;error&quot;</span>));
+});
+</code></pre>
+<h2 id="resolves--rejects">.resolves / .rejects</h2>
+<p><code>expect</code> &#xC5D0; &#xD65C;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB294; <code>.resolves</code> Matcher &#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; Jest &#xB294; &#xD574;&#xB2F9; Promise &#xAC00; resolve &#xB420; &#xB54C;&#xAE4C;&#xC9C0; &#xAE30;&#xB2E4;&#xB9BD;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; Promise &#xAC00; reject &#xB41C;&#xB2E4;&#xBA74;, test &#xB294; &#xC790;&#xB3D9;&#xC801;&#xC73C;&#xB85C; &#xC2E4;&#xD328;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;the data is peanut butter&quot;</span>, () =&gt; {
+  expect.assertions(<span class="hljs-number">1</span>);
+  <span class="hljs-keyword">return</span> expect(fetchData()).resolves.toBe(<span class="hljs-string">&quot;peanut butter&quot;</span>);
+});
+</code></pre>
+<p>assertion &#xC744; return &#xD558;&#xB294; &#xAC83;&#xC744; &#xC78A;&#xC9C0; &#xB9C8;&#xC138;&#xC694;. &#xB9CC;&#xC57D; &#xC774; <code>return</code>&#xAD6C;&#xBB38;&#xC744; &#xC0DD;&#xB7B5;&#xD55C;&#xB2E4;&#xBA74;, &#xD14C;&#xC2A4;&#xD2B8;&#xB294; <code>fetchData</code>&#xAC00; &#xC2E4;&#xD589;&#xC744; &#xB05D;&#xB9C8;&#xCE58;&#xAE30;&#xB3C4; &#xC804;&#xC5D0; &#xBA3C;&#xC800; &#xC885;&#xB8CC;&#xB418;&#xC5B4;&#xBC84;&#xB9B4; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB9CC;&#xC57D; Promise &#xAC00; reject &#xB418;&#xB294; &#xACBD;&#xC6B0;&#xB97C; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, <code>.rejects</code> Matcher &#xB97C; &#xC4F0;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;. <code>.resolves</code> Matcher &#xC640; &#xC720;&#xC0AC;&#xD55C; &#xBC29;&#xC2DD;&#xC785;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; Promise &#xAC00; resolve &#xB41C;&#xB2E4;&#xBA74;, &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xC2E4;&#xD328;&#xD560; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;the fetch fails with an error&quot;</span>, () =&gt; {
+  expect.assertions(<span class="hljs-number">1</span>);
+  <span class="hljs-keyword">return</span> expect(fetchData()).rejects.toMatch(<span class="hljs-string">&quot;error&quot;</span>);
+});
+</code></pre>
+<h2 id="async--await">Async / Await</h2>
+<p>&#xD14C;&#xC2A4;&#xD2B8;&#xC5D0; <code>async</code>&#xC640; <code>await</code>&#xB97C; &#xC4F8; &#xC218;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xBE44;&#xB3D9;&#xAE30; &#xCF54;&#xB4DC;&#xB97C; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xAE30; &#xC704;&#xD574;, &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xACE0;&#xC790; &#xD558;&#xB294; &#xD568;&#xC218; &#xC55E;&#xC5D0; <code>async</code> &#xD0A4;&#xC6CC;&#xB4DC;&#xB97C; &#xBD99;&#xC774;&#xAE30;&#xB9CC; &#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;. &#xC55E;&#xC11C; &#xC5B8;&#xAE09;&#xB418;&#xC5C8;&#xB358; <code>fetchData</code>&#xB97C; &#xB2E4;&#xC2DC; &#xC608;&#xC2DC;&#xB85C; &#xB4E4;&#xC5B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;the data is peanut butter&quot;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  expect.assertions(<span class="hljs-number">1</span>);
+  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> fetchData();
+  expect(data).toBe(<span class="hljs-string">&quot;peanut butter&quot;</span>);
+});
+
+test(<span class="hljs-string">&quot;the fetch fails with an error&quot;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  expect.assertions(<span class="hljs-number">1</span>);
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">await</span> fetchData();
+  } <span class="hljs-keyword">catch</span> (e) {
+    expect(e).toMatch(<span class="hljs-string">&quot;error&quot;</span>);
+  }
+});
+</code></pre>
+<p>&#xBB3C;&#xB860;, <code>async</code> &amp; <code>await</code>&#xC744; <code>.resolves</code> &amp; <code>.rejects</code>&#xC640; &#xACB0;&#xD569;&#xD574;&#xC11C; &#xC4F8; &#xC218;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;the data is peanut butter&quot;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  expect.assertions(<span class="hljs-number">1</span>);
+  <span class="hljs-keyword">await</span> expect(fetchData()).resolves.toBe(<span class="hljs-string">&quot;peanut butter&quot;</span>);
+});
+
+test(<span class="hljs-string">&quot;the fetch fails with an error&quot;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  expect.assertions(<span class="hljs-number">1</span>);
+  <span class="hljs-keyword">await</span> expect(fetchData()).rejects.toMatch(<span class="hljs-string">&quot;error&quot;</span>);
+});
+</code></pre>
+<p>&#xC774;&#xCC98;&#xB7FC; <code>async</code>&#xC640; <code>await</code>&#xC740; Promise &#xB97C; &#xC774;&#xC6A9;&#xD55C; &#xC608;&#xC81C;&#xC5D0;&#xC11C; &#xD6A8;&#xC728;&#xC801;&#xC778; &#xBB38;&#xBC95; &#xC124;&#xD0D5;(syntactic sugar)&#xC73C;&#xB85C; &#xD65C;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC704;&#xC5D0; &#xC5B8;&#xAE09;&#xD55C; &#xC5EC;&#xB7EC; &#xBC29;&#xC2DD; &#xC911;&#xC5D0; &#xC808;&#xB300;&#xC801;&#xC73C;&#xB85C; &#xC6B0;&#xC6D4;&#xD55C; &#xBC29;&#xC2DD;&#xC740; &#xC5C6;&#xC2B5;&#xB2C8;&#xB2E4;. &#xD14C;&#xC2A4;&#xD2B8; &#xCF54;&#xB4DC;&#xC758; &#xAC00;&#xB3C5;&#xC131;&#xC744; &#xB192;&#xC774;&#xAE30; &#xC704;&#xD574;, &#xB2F9;&#xC2E0;&#xC758; &#xAE30;&#xC874; &#xCF54;&#xB4DC; &#xBCA0;&#xC774;&#xC2A4;&#xC5D0; &#xB9DE;&#xCDB0; &#xC801;&#xC808;&#xD55C; &#xBC29;&#xC2DD;&#xC744; &#xD65C;&#xC6A9;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="UsingMatchers.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Using Matchers">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Testing Asynchronous Code","level":"1.2.3","depth":2,"previous":{"title":"Using Matchers","level":"1.2.2","depth":2,"path":"Introduction/UsingMatchers.md","ref":"Introduction/UsingMatchers.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/TestingAsynchronousCode.md","mtime":"2018-11-04T08:44:27.868Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-04T08:45:12.791Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
