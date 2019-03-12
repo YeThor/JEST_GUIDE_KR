@@ -4,7 +4,7 @@
 - 소개
   - [시작하기](Introduction/0.GettingStarted.md)
   - [Matcher 사용하기](Introduction/1.UsingMatchers.md)
-  - [Testing Asynchronous Code](Introduction/2.TestingAsynchronousCode.md)
+  - [비동기 코드 테스트하기](Introduction/2.TestingAsynchronousCode.md)
   - [Setup and Teardown](Introduction/3.SetupAndTeardown.md)
   - [Mock Functions](Introduction/4.MockFunctions.md)
   - [Jest Platform](Introduction/5.JestPlatform.md)
