@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Testing Asynchronous Code · GitBook</title>
+        <title>비동기 코드 테스트하기 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -147,7 +147,7 @@
                 <a href="2.TestingAsynchronousCode.html">
             
                     
-                    Testing Asynchronous Code
+                    비동기 코드 테스트하기
             
                 </a>
             
@@ -242,7 +242,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Testing Asynchronous Code</a>
+        <a href=".." >비동기 코드 테스트하기</a>
     </h1>
 </div>
 
@@ -264,12 +264,11 @@
 <p>&#xC790;&#xBC14;&#xC2A4;&#xD06C;&#xB9BD;&#xD2B8; &#xCF54;&#xB4DC;&#xAC00; &#xBE44;&#xB3D9;&#xAE30;&#xC801;&#xC73C;&#xB85C;(asynchronously) &#xC2E4;&#xD589;&#xB418;&#xB294; &#xAC83;&#xC740; &#xD754;&#xD55C; &#xC77C;&#xC785;&#xB2C8;&#xB2E4;.
 &#xBE44;&#xB3D9;&#xAE30;&#xC801;&#xC73C;&#xB85C; &#xC2E4;&#xD589;&#xB418;&#xB294; &#xCF54;&#xB4DC;&#xAC00; &#xC788;&#xB2E4;&#xBA74;, Jest&#xB294; &#xADF8; &#xCF54;&#xB4DC;&#xAC00; &#xC5B8;&#xC81C; &#xB3D9;&#xC791;&#xC744; &#xC644;&#xB8CC;&#xD558;&#xB294;&#xC9C0; &#xC54C;&#xC544;&#xC57C;&#xB9CC; &#xB2E4;&#xC74C; &#xD14C;&#xC2A4;&#xD2B8;&#xB85C; &#xBA3C;&#xC800; &#xB118;&#xC5B4;&#xAC00;&#xBC84;&#xB9AC;&#xB294; &#xC6B0;&#xB97C; &#xBC94;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. Jest&#xC5D0;&#xB294; &#xC774;&#xB97C; &#xB2E4;&#xB8E8;&#xB294; &#xBA87; &#xAC00;&#xC9C0; &#xBC29;&#xC2DD;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <h2 id="&#xCF5C;&#xBC31;callback">&#xCF5C;&#xBC31;(Callback)</h2>
-<p>&#xAC00;&#xC7A5; &#xD754;&#xD558;&#xAC8C; &#xBCFC; &#xC218; &#xC788;&#xB294; &#xBE44;&#xB3D9;&#xAE30; &#xD328;&#xD134;&#xC740; &#xCF5C;&#xBC31;&#xC785;&#xB2C8;&#xB2E4;.
-// &#xC5EC;&#xAE30;&#xBD80;&#xD130; &#xB2E4;&#xC2DC; &#xC2DC;&#xC791;
-<code>fetchData(callback)</code>&#xB77C;&#xB294; &#xD568;&#xC218;&#xB97C; &#xC608;&#xC2DC;&#xB85C; &#xB4E4;&#xC5B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xD568;&#xC218;&#xB294; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC694;&#xCCAD;&#xD55C; &#xD6C4; &#xB370;&#xC774;&#xD130;&#xAC00; &#xB3C4;&#xCC29;&#xD558;&#xBA74; <code>callback(data)</code>&#xB97C; &#xD638;&#xCD9C;&#xD569;&#xB2C8;&#xB2E4;. &#xC5EC;&#xAE30;&#xC11C; &#xBC18;&#xD658;&#xB41C; &#xB370;&#xC774;&#xD130; &#xAC12;&#xC774; &#xBB38;&#xC790;&#xC5F4; <code>&apos;peanut butter&apos;</code>&#xC784;&#xC744; &#xD14C;&#xC2A4;&#xD2B8;&#xD574;&#xC57C; &#xD558;&#xB294; &#xC0C1;&#xD669;&#xC774;&#xB77C;&#xACE0; &#xAC00;&#xC815;&#xD574;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<p>&#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C;, Jest &#xB294; &#xB9C8;&#xC9C0;&#xB9C9; &#xCF54;&#xB4DC;&#xAE4C;&#xC9C0; &#xC2E4;&#xD589;&#xB418;&#xBA74; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xB05D;&#xB9C8;&#xCE69;&#xB2C8;&#xB2E4;. &#xB2E4;&#xC2DC; &#xB9D0;&#xD574; &#xB2E4;&#xC74C; &#xCF54;&#xB4DC;&#xB85C; &#xC791;&#xC131;&#xB41C; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xC758;&#xB3C4;&#xD55C; &#xB300;&#xB85C; &#xC791;&#xB3D9;&#xD558;&#xC9C0; <em>&#xC54A;&#xC744;</em> &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xAC00;&#xC7A5; &#xD754;&#xD558;&#xAC8C; &#xBCFC; &#xC218; &#xC788;&#xB294; &#xBE44;&#xB3D9;&#xAE30; &#xD328;&#xD134;&#xC740; &#xCF5C;&#xBC31;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC608;&#xB97C; &#xB4E4;&#xC5B4;, &#xB370;&#xC774;&#xD130;&#xB97C; &#xC694;&#xCCAD;&#xD55C; &#xD6C4; &#xB370;&#xC774;&#xD130;&#xAC00; &#xB3C4;&#xCC29;&#xD558;&#xBA74; <code>callback(data)</code>&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xB294; <code>fetchData(callback)</code> &#xD568;&#xC218;&#xAC00; &#xC788;&#xB2E4;&#xACE0; &#xD569;&#xC2DC;&#xB2E4;. &#xC5EC;&#xAE30;&#xC11C; &#xB9AC;&#xD134;&#xB41C; &#xB370;&#xC774;&#xD130; &#xAC12;&#xC774; &#xBB38;&#xC790;&#xC5F4; <code>&apos;peanut butter&apos;</code>&#xC784;&#xC744; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xACE0; &#xC2F6;&#xC740; &#xC0C1;&#xD669;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C;, Jest&#xB294; &#xC2E4;&#xD589;&#xC758; &#xB05D;&#xBD80;&#xBD84;&#xAE4C;&#xC9C0; &#xB3C4;&#xB2EC;&#xD558;&#xBA74; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xB9C8;&#xCE69;&#xB2C8;&#xB2E4;. &#xB2E4;&#xC2DC; &#xB9D0;&#xD574; &#xB2E4;&#xC74C; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xC758;&#xB3C4;&#xD55C; &#xB300;&#xB85C; &#xB3D9;&#xC791;&#xD558;&#xC9C0; <em>&#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.</em></p>
 <pre><code class="lang-jsx"><span class="hljs-comment">// &#xC774;&#xB807;&#xAC8C; &#xD558;&#xC9C0; &#xB9C8;&#xC138;&#xC694;!</span>
-test(<span class="hljs-string">&quot;data&#xC758; &#xAC12;&#xC740; peanut butter&#xC774;&#xB2E4;&quot;</span>, () =&gt; {
+test(<span class="hljs-string">&quot;the data is peanut butter&quot;</span>, () =&gt; {
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">data</span>) </span>{
     expect(data).toBe(<span class="hljs-string">&quot;peanut butter&quot;</span>);
   }
@@ -277,9 +276,9 @@ test(<span class="hljs-string">&quot;data&#xC758; &#xAC12;&#xC740; peanut butter
   fetchData(callback);
 });
 </code></pre>
-<p><code>fetchData</code>&#xAC00; &#xC2E4;&#xD589;&#xB418;&#xB294; &#xC21C;&#xAC04;, &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xCF5C;&#xBC31; &#xD568;&#xC218;&#xAC00; &#xBBF8;&#xCC98; &#xD638;&#xCD9C;&#xB418;&#xC9C0; &#xBABB;&#xD55C; &#xCC44;&#xB85C; &#xC885;&#xB8CC;&#xB418;&#xC5B4;&#xBC84;&#xB9BD;&#xB2C8;&#xB2E4;.</p>
-<p>&#xC774;&#xB97C; &#xBC14;&#xB85C;&#xC7A1;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, <code>test</code>&#xC758; &#xBC29;&#xC2DD;&#xC744; &#xC870;&#xAE08; &#xBC14;&#xAFB8;&#xC5B4;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;. &#xAE30;&#xC874; &#xCF54;&#xB4DC;&#xCC98;&#xB7FC; &#xBE48; &#xC778;&#xC218;&#xB97C; &#xB123;&#xB294; &#xB300;&#xC2E0;, <code>done</code>&#xC774;&#xB77C;&#xB294; &#xC778;&#xC218;&#xB97C; &#xB123;&#xC73C;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;. &#xADF8;&#xB7EC;&#xBA74; Jest &#xB294; <code>done</code>&#xC774; &#xD638;&#xCD9C;&#xB420; &#xB54C;&#xAE4C;&#xC9C0; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xC885;&#xB8CC;&#xD558;&#xC9C0; &#xC54A;&#xACE0; &#xAE30;&#xB2E4;&#xB9B4; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
-<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;data&#xC758; &#xAC12;&#xC740; peanut butter&#xC774;&#xB2E4;&quot;</span>, done =&gt; {
+<p>&#xBB38;&#xC81C;&#xB294; &#xCF5C;&#xBC31;&#xC774; &#xBBF8;&#xCC98; &#xD638;&#xCD9C;&#xB418;&#xAE30;&#xB3C4; &#xC804;&#xC5D0; <code>fetchData</code>&#xAC00; &#xC2E4;&#xD589;&#xB41C; &#xC21C;&#xAC04; &#xD14C;&#xC2A4;&#xD2B8;&#xB3C4; &#xB05D;&#xB098;&#xBC84;&#xB9B0;&#xB2E4;&#xB294; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC774;&#xB97C; &#xACE0;&#xCE58;&#xB824;&#xBA74; <code>test</code>&#xC758; &#xD615;&#xC2DD;&#xC744; &#xBC14;&#xAFB8;&#xC5B4;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;. &#xAE30;&#xC874; &#xCF54;&#xB4DC;&#xCC98;&#xB7FC; &#xBE48; &#xC778;&#xC790;(argument)&#xB97C; &#xB123;&#xB294; &#xB300;&#xC2E0;, <code>done</code>&#xC774;&#xB77C;&#xB294; &#xC778;&#xC790;&#xB97C; &#xB123;&#xC2B5;&#xB2C8;&#xB2E4;. Jest&#xB294; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xB9C8;&#xCE58;&#xAE30; &#xC804;&#xC5D0; <code>done</code> &#xCF5C;&#xBC31;&#xC774; &#xD638;&#xCD9C;&#xB420; &#xB54C;&#xAE4C;&#xC9C0; &#xAE30;&#xB2E4;&#xB9B4; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;the data is peanut butter&quot;</span>, done =&gt; {
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">data</span>) </span>{
     expect(data).toBe(<span class="hljs-string">&quot;peanut butter&quot;</span>);
     done();
@@ -288,24 +287,24 @@ test(<span class="hljs-string">&quot;data&#xC758; &#xAC12;&#xC740; peanut butter
   fetchData(callback);
 });
 </code></pre>
-<p>&#xB9CC;&#xC57D; <code>done</code>&#xC774; &#xC2E4;&#xD589;&#xB418;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xC2E4;&#xD328;&#xD560; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xC815;&#xD655;&#xD788; &#xC758;&#xB3C4;&#xD55C; &#xB300;&#xB85C;&#xC8E0;.</p>
-<h2 id="promises">Promises</h2>
-<p>&#xB9CC;&#xC57D; Promise &#xB97C; &#xC0AC;&#xC6A9; &#xC911;&#xC774;&#xB77C;&#xBA74;, &#xBE44;&#xB3D9;&#xAE30; &#xCF54;&#xB4DC;&#xB97C; &#xB354; &#xC27D;&#xAC8C; &#xD14C;&#xC2A4;&#xD2B8;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. Jest &#xB85C; &#xD558;&#xC5EC;&#xAE08; &#xD14C;&#xC2A4;&#xD2B8;&#xB85C;&#xBD80;&#xD130; Promise &#xB97C; &#xB9AC;&#xD134;&#xD558;&#xAC8C; &#xD558;&#xBA74;, Jest &#xB294; &#xD574;&#xB2F9; Promise &#xAC00; resolve &#xB420; &#xB54C;&#xAE4C;&#xC9C0; &#xAE30;&#xB2E4;&#xB9BD;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; Promise &#xAC00; reject &#xB418;&#xBA74;, &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xC2E4;&#xD328;&#xD569;&#xB2C8;&#xB2E4;.</p>
-<p><code>fetchData</code>&#xB77C;&#xB294; &#xD568;&#xC218;&#xB97C; &#xB2E4;&#xC2DC; &#xC608;&#xC2DC;&#xB85C; &#xB4E4;&#xC5B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774;&#xC804;&#xACFC; &#xB2EC;&#xB9AC; &#xC774; &#xD568;&#xC218;&#xB294; callback &#xC744; &#xC4F0;&#xC9C0; &#xC54A;&#xACE0;, &#xBB38;&#xC790;&#xC5F4; <code>&apos;peanut butter&apos;</code>&#xB85C; resolve &#xB418;&#xB294; Promise &#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xC774;&#xB7F0; &#xACBD;&#xC6B0;&#xC5D4; &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
-<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;data&#xC758; &#xAC12;&#xC740; peanut butter&#xC774;&#xB2E4;&quot;</span>, () =&gt; {
-  expect.assertions(<span class="hljs-number">1</span>);
+<p>&#xB9CC;&#xC57D; <code>done</code>&#xC774; &#xD638;&#xCD9C;&#xB418;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xC2E4;&#xD328;&#xD560; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xB2F9;&#xC2E0;&#xC774; &#xC6D0;&#xD588;&#xB358; &#xB300;&#xB85C;&#xC694;.</p>
+<h2 id="&#xD504;&#xB85C;&#xBBF8;&#xC2A4;promise">&#xD504;&#xB85C;&#xBBF8;&#xC2A4;(Promise)</h2>
+<p>&#xB9CC;&#xC57D; &#xCF54;&#xB4DC;&#xC5D0;&#xC11C; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xACE0; &#xC788;&#xB2E4;&#xBA74;, &#xBE44;&#xB3D9;&#xAE30; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xB354; &#xAC04;&#xB2E8;&#xD558;&#xAC8C; &#xB2E4;&#xB8F0; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xD14C;&#xC2A4;&#xD2B8;&#xB85C;&#xBD80;&#xD130; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB97C; &#xB9AC;&#xD134;&#xD558;&#xC138;&#xC694;. &#xADF8;&#xB7EC;&#xBA74; Jest&#xB294; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xAC00; resolve&#xB420; &#xB54C;&#xAE4C;&#xC9C0; &#xAE30;&#xB2E4;&#xB9B4; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;. &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xAC00; reject&#xB418;&#xBA74; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xC2E4;&#xD328;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p><code>fetchData</code>&#xB77C;&#xB294; &#xD568;&#xC218;&#xB97C; &#xB2E4;&#xC2DC; &#xC608;&#xC2DC;&#xB85C; &#xB4E4;&#xC5B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774;&#xC804;&#xACFC; &#xB2EC;&#xB9AC; &#xCF5C;&#xBC31; &#xD568;&#xC218;&#xB97C; &#xC4F0;&#xC9C0; &#xC54A;&#xACE0;, &#xBB38;&#xC790;&#xC5F4; <code>&apos;peanut butter&apos;</code>&#xB85C; resolve&#xB418;&#xB294; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB97C; &#xB9AC;&#xD134;&#xD55C;&#xB2E4;&#xACE0; &#xD569;&#xC2DC;&#xB2E4;. &#xB2E4;&#xC74C;&#xCC98;&#xB7FC; &#xD14C;&#xC2A4;&#xD2B8;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;:</p>
+<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;the data is peanut butter&quot;</span>, () =&gt; {
   <span class="hljs-keyword">return</span> fetchData().then(data =&gt; {
     expect(data).toBe(<span class="hljs-string">&quot;peanut butter&quot;</span>);
   });
 });
 </code></pre>
-<p>Promise &#xB97C; &#xBC18;&#xD658;&#xD558;&#xB294; &#xAC83;&#xC744; &#xC78A;&#xC9C0; &#xB9C8;&#xC138;&#xC694;. &#xB9CC;&#xC77C; &#xC774; <code>return</code> &#xCF54;&#xB4DC;&#xB97C; &#xBE60;&#xB728;&#xB9B0;&#xB2E4;&#xBA74;, &#xD14C;&#xC2A4;&#xD2B8;&#xB294; <code>fetchData</code>&#xC758; &#xB3D9;&#xC791;&#xC774; &#xC644;&#xB8CC;&#xB418;&#xAE30;&#xB3C4; &#xC804;&#xC5D0; &#xC885;&#xB8CC;&#xB420; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
-<p>&#xB9CC;&#xC57D; Promise &#xAC00; reject &#xB418;&#xB294; &#xACBD;&#xC6B0;&#xB97C; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, <code>.catch</code> &#xBA54;&#xC18C;&#xB4DC;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;. <code>expect.assertions</code>&#xB97C; &#xCD94;&#xAC00;&#xD558;&#xB294; &#xAC83;&#xC744; &#xC78A;&#xC9C0; &#xB9C8;&#xC138;&#xC694;. &#xC774; &#xD568;&#xC218;&#xB294; assertion(<em>&#xBC88;&#xC5ED;&#xC790;: &#xB2E8;&#xC5B8;&#xC774;&#xB77C;&#xB294; &#xB73B;, &#xC989; &#xD14C;&#xC2A4;&#xD2B8;&#xB85C; <code>~&#xC77C; &#xAC83;&#xC774;&#xB2E4;</code>&#xB77C;&#xACE0; &#xC120;&#xC5B8;&#xD55C; &#xBD80;&#xBD84;&#xC744; &#xC77C;&#xCEEB;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC27D;&#xAC8C;&#xB294; <code>expect</code> &#xAD6C;&#xBB38;&#xC774;&#xB77C;&#xACE0; &#xBCF4;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</em>)&#xC774; &#xC815;&#xD655;&#xD788; &#xBA87; &#xBC88; &#xC2E4;&#xD589;&#xB418;&#xC5C8;&#xB294;&#xC9C0;&#xB97C; &#xD14C;&#xC2A4;&#xD2B8;&#xD569;&#xB2C8;&#xB2E4;. &#xC774;&#xB97C; &#xCD94;&#xAC00;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xACBD;&#xC6B0;, &#xB9CC;&#xC57D; Promise &#xAC00; resolve &#xB418;&#xC5B4;&#xBC84;&#xB9AC;&#xBA74; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xADF8;&#xB300;&#xB85C; &#xD1B5;&#xACFC;&#xB418;&#xC5B4;&#xBC84;&#xB9B4; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
-<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;error&#xAC00; &#xB098;&#xBA74;&#xC11C; &#xB370;&#xC774;&#xD130; fetch&#xC5D0; &#xC2E4;&#xD328;&#xD55C;&#xB2E4;&quot;</span>, () =&gt; {
+<p>&#xBC18;&#xB4DC;&#xC2DC; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB97C; &#xB9AC;&#xD134;&#xD558;&#xB3C4;&#xB85D; &#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC77C; &#xC774; <code>return</code> &#xBB38;&#xC744; &#xBE60;&#xB728;&#xB9B0;&#xB2E4;&#xBA74;, &#xD14C;&#xC2A4;&#xD2B8;&#xB294; <code>fetchData</code>&#xC5D0;&#xC11C; &#xB9AC;&#xD134;&#xBC1B;&#xC740; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xAC00; resolve&#xB418;&#xAE30;&#xB3C4; &#xC804;&#xC5D0; &#xC885;&#xB8CC;&#xB420; &#xAC83;&#xC774;&#xACE0; then()&#xC740; &#xCF5C;&#xBC31;&#xC744; &#xC2E4;&#xD589;&#xD560; &#xAE30;&#xD68C;&#xB97C; &#xB193;&#xCE60; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB9CC;&#xC57D; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xAC00; reject&#xB2F9;&#xD558;&#xB294; &#xACBD;&#xC6B0;&#xB97C; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74; <code>.catch</code> &#xBA54;&#xC18C;&#xB4DC;&#xB97C; &#xC4F0;&#xC138;&#xC694;. <code>expect.assertions</code>&#xB97C; &#xCD94;&#xAC00;&#xD574; &#xD2B9;&#xC815; &#xD69F;&#xC218;&#xB9CC;&#xD07C;&#xC758; assertion&#xC774; &#xD638;&#xCD9C;&#xB410;&#xB294;&#xC9C0; &#xAC80;&#xC99D;&#xD569;&#xB2C8;&#xB2E4;. &#xC774;&#xB807;&#xAC8C; &#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xAC00; &#xCDA9;&#xC871;&#xB41C;(fulfilled) &#xACBD;&#xC6B0; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xD1B5;&#xACFC;&#xD574;&#xBC84;&#xB9BD;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-jsx">test(<span class="hljs-string">&quot;the fetch fails with an error&quot;</span>, () =&gt; {
   expect.assertions(<span class="hljs-number">1</span>);
   <span class="hljs-keyword">return</span> fetchData().catch(e =&gt; expect(e).toMatch(<span class="hljs-string">&quot;error&quot;</span>));
 });
 </code></pre>
+<hr>
 <h2 id="resolves--rejects">.resolves / .rejects</h2>
 <p><code>expect</code> &#xC5D0; &#xD65C;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB294; <code>.resolves</code> Matcher &#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; Jest &#xB294; &#xD574;&#xB2F9; Promise &#xAC00; resolve &#xB420; &#xB54C;&#xAE4C;&#xC9C0; &#xAE30;&#xB2E4;&#xB9BD;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; Promise &#xAC00; reject &#xB41C;&#xB2E4;&#xBA74;, test &#xB294; &#xC790;&#xB3D9;&#xC801;&#xC73C;&#xB85C; &#xC2E4;&#xD328;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-jsx">test(<span class="hljs-string">&quot;the data is peanut butter&quot;</span>, () =&gt; {
@@ -393,7 +392,7 @@ test(<span class="hljs-string">&quot;the fetch fails with an error&quot;</span>,
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Testing Asynchronous Code","level":"1.2.3","depth":2,"next":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"path":"Introduction/3.SetupAndTeardown.md","ref":"Introduction/3.SetupAndTeardown.md","articles":[]},"previous":{"title":"Matcher 사용하기","level":"1.2.2","depth":2,"path":"Introduction/1.UsingMatchers.md","ref":"Introduction/1.UsingMatchers.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/2.TestingAsynchronousCode.md","mtime":"2019-03-06T15:49:59.834Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-06T15:50:28.744Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"비동기 코드 테스트하기","level":"1.2.3","depth":2,"next":{"title":"Setup and Teardown","level":"1.2.4","depth":2,"path":"Introduction/3.SetupAndTeardown.md","ref":"Introduction/3.SetupAndTeardown.md","articles":[]},"previous":{"title":"Matcher 사용하기","level":"1.2.2","depth":2,"path":"Introduction/1.UsingMatchers.md","ref":"Introduction/1.UsingMatchers.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Introduction/2.TestingAsynchronousCode.md","mtime":"2019-03-12T14:41:16.528Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-12T14:41:39.018Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
